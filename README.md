@@ -82,3 +82,11 @@ Você tem a liberdade de usar qualquer tecnologia para criar a sua aplicação, 
 Sim, você pode integrar outras fontes de dados externas à sua aplicação, além da API que fornecemos. No entanto, lembre-se que o uso da nossa API é obrigatório para participar do hackathon.
 ```
 </details>
+
+<details>
+<summary>Posso fazer em dupla ou com mais pessoas?</summary>
+
+```
+Sim. Porém somente uma resolução deverá ser submetida. O grupo será responsável em dividir a premiação internamente, tendo que escolher uma pessoa para ganhar o Codante PRO.
+```
+</details>
