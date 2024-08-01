@@ -6,7 +6,7 @@ NODE_ENV=development
 GRAPHQL_PORT=4000
 GRPC_PORT=50051
 REST_PORT=3000
-OLYMPIC_GAMES_URL=https://apis.codante.io/olympic-games/
+OLYMPIC_GAMES_URL=https://apis.codante.io/olympic-games
 
 start-http:
 	TZ=$(TZ) \
