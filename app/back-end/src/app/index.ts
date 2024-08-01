@@ -17,15 +17,13 @@ const server = (graphqlServer: Express, grpcServer: any, restServer: Promise<Exp
     graphqlServer.listen(graphqlPort, () => {
       global.console.log(`Graphql server ready at http://localhost:${graphqlPort}`)
     })
-      ; (await restServer).listen(restPort, () => {
-        global.console.log(`Rest server ready at http://localhost:${restPort}`)
-      })
+    ;(await restServer).listen(restPort, () => {
+      global.console.log(`Rest server ready at http://localhost:${restPort}`)
+    })
 
     const grpcUri = `0.0.0.0:${grpcPort}`
 
     grpcServer.bindAsync(grpcUri, ServerCredentials.createInsecure(), () => {
-      grpcServer.start()
-
       global.console.log(`GRPC server ready at ${grpcUri}`)
     })
   }
