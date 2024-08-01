@@ -12,6 +12,15 @@ export class EventsService extends BaseService {
   }
 
   private getParams = (payload: IGetEventsPayload): string => {
-    return ''
+    let params = ''
+
+    for (const field in payload) {
+      const currPayloadFieldVal = (payload as any)[field]
+      if (currPayloadFieldVal) {
+        params += `&${field}=${currPayloadFieldVal}`
+      }
+    }
+
+    return params
   }
 }

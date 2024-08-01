@@ -12,9 +12,10 @@ export class EventsRepository implements IEventsRepository {
   constructor(private readonly http: IHTTP) {}
 
   getEvents = async (params: string): Promise<IGetEventsResponse> => {
+    const URL = `/events?${params}`
+
     try {
-      console.log(await this.http.get('/events', { params }))
-      return (await this.http.get('/events', { params })).data
+      return (await this.http.get(URL)).data
     } catch (err) {
       throw new Error(EApplicationErrors.REQUEST_TO_OLYMPIC_GAMES_API_FAILED)
     }
