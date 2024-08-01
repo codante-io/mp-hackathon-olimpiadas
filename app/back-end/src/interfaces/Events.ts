@@ -2,7 +2,7 @@ export interface IGetEventsPayload {
   country?: string;
   discipline?: string;
   venue?: string;
-  date?: Date;
+  date?: string;
   competitor?: string;
   page?: number;
 }

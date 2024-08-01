@@ -14,7 +14,7 @@ export class EventsPayloadValidator {
       venue: Joi.string().messages({
         'string.base': EEventsPayloadErrors.VENUE_MUST_BE_A_STRING,
       }),
-      date: Joi.date().iso().messages({
+      date: Joi.date().iso().raw().messages({
         'date.base': EEventsPayloadErrors.DATE_MUST_BE_A_VALID_DATE,
         'date.isoDate': EEventsPayloadErrors.DATE_MUST_BE_A_VALID_DATE,
       }),
