@@ -1,13 +1,13 @@
 import { Router } from 'express'
-import { ExpressAdapter } from '../../../adapters/ExpressAdapter'
-import { WelcomeController } from '../../../controllers'
+import { ExpressAdapter } from '../../../adapters'
+import { EventsController } from '../../../controllers'
 
 const router = Router()
 
 export default ({ repository, cache, logger }: any) => {
-  const welcomeController = new WelcomeController(repository, cache, logger)
+  const eventsController = new EventsController(repository, cache, logger)
 
-  router.get('/welcome', ExpressAdapter.perform(welcomeController.getMessage.bind(welcomeController)))
+  router.get('/events', ExpressAdapter.perform(eventsController.getEvents.bind(eventsController)))
 
   return router
 }

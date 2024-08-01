@@ -1,5 +1,5 @@
+import { IContext } from '../interfaces'
+
 export abstract class BaseController {
-  constructor(
-    repository: []
-  ) { }
+  constructor(protected readonly repository: IContext['repository']) {}
 }
