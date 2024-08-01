@@ -3,15 +3,72 @@ syntax = "proto3";
 import "google/protobuf/empty.proto";
 import "google/protobuf/wrappers.proto";
 
-message WelcomeRequest {
-  string name = 1;
+// Message for GetEventsPayload
+message GetEventsPayload {
+  string country = 1;
+  string discipline = 2;
+  string venue = 3;
+  string date = 4;  // Use ISO 8601 string representation
+  string competitor = 5;
+  int32 page = 6;
 }
 
-message WelcomeResponse {
-  string message = 1;
+// Message for Competitor
+message Competitor {
+  string countryId = 1;
+  string countryFlagUrl = 2;
+  string competitorName = 3;
+  int32 position = 4;
+  string resultPosition = 5;
+  string resultWinnerLoserTie = 6;
+  string resultMark = 7;
+}
+
+// Message for Event
+message Event {
+  int32 id = 1;
+  string day = 2;
+  string disciplineName = 3;
+  string disciplinePictogram = 4;
+  string name = 5;
+  string venueName = 6;
+  string eventName = 7;
+  string detailedEventName = 8;
+  string startDate = 9;
+  string endDate = 10;
+  string status = 11;
+  int32 isMedalEvent = 12;
+  int32 isLive = 13;
+  repeated Competitor competitors = 14;
+}
+
+// Message for Links
+message Links {
+  string first = 1;
+  string last = 2;
+  string prev = 3;
+  string next = 4;
+}
+
+// Message for Meta
+message Meta {
+  int32 currentPage = 1;
+  int32 from = 2;
+  int32 lastPage = 3;
+  string path = 4;
+  int32 perPage = 5;
+  int32 to = 6;
+  int32 total = 7;
+}
+
+// Message for GetEventsResponse
+message GetEventsResponse {
+  repeated Event data = 1;
+  Links links = 2;
+  Meta meta = 3;
 }
 
 service RpcService {
   rpc Ping(google.protobuf.Empty) returns (google.protobuf.StringValue);
-  rpc Welcome(WelcomeRequest) returns (WelcomeResponse);
+  rpc GetEvents(GetEventsPayload) returns (GetEventsResponse);
 }
