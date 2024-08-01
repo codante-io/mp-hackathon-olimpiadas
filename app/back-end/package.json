@@ -47,7 +47,7 @@
     "@graphql-tools/load-files": "^6.6.0",
     "@graphql-tools/merge": "^8.3.0",
     "@graphql-tools/schema": "^9.0.16",
-    "@grpc/grpc-js": "^1.7.3",
+    "@grpc/grpc-js": "^1.11.1",
     "@grpc/proto-loader": "^0.7.0",
     "axios": "^1.2.2",
     "compression": "^1.7.4",
@@ -64,8 +64,7 @@
     "newrelic": "^9.7.5",
     "redis": "^3.1.2",
     "swagger-ui-express": "^4.5.0",
-    "type-graphql": "^1.1.1",
-    "winston": "^3.13.1"
+    "type-graphql": "^1.1.1"
   },
   "resolutions": {
     "glob-parent": "6.0.1"
