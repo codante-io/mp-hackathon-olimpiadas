@@ -1,0 +1,10 @@
+scalar Upload
+scalar Date
+
+type Query {
+  ping: String!
+}
+
+type Mutation {
+  _empty(id: ID): String
+}

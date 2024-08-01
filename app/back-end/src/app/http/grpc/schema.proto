@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+message WelcomeRequest {
+  string name = 1;
+}
+
+message WelcomeResponse {
+  string message = 1;
+}
+
+service RpcService {
+  rpc Ping(google.protobuf.Empty) returns (google.protobuf.StringValue);
+  rpc Welcome(WelcomeRequest) returns (WelcomeResponse);
+}

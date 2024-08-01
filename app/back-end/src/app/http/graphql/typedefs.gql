@@ -1,0 +1,17 @@
+extend type Query {
+  welcome(input: WelcomeInput): Welcome!
+  health: HealthResponse!
+}
+
+type HealthResponse {
+  uptime: String
+  timestamp: String
+}
+
+input WelcomeInput {
+  name: String!
+}
+
+type Welcome {
+  message: String!
+}
