@@ -2,48 +2,29 @@ import * as grpc from '@grpc/grpc-js'
 import * as protoLoader from '@grpc/proto-loader'
 import path from 'path'
 
-import { WelcomeController } from '../../../controllers'
+import EventsImplementation from './EventsImplementation'
 
-const packageDefinition = protoLoader.loadSync(
-  path.resolve(`${__dirname}/schema.proto`),
-  {
-    keepCase: true,
-    longs: String,
-    enums: String,
-    defaults: false,
-    oneofs: true,
-  }
+import { IContext } from '../../../interfaces'
+
+const DEFAULT_RPC_CONFS: any = {
+  keepCase: true,
+  longs: String,
+  enums: String,
+  defaults: false,
+  oneofs: true,
+}
+
+const eventsPackageDefinition = protoLoader.loadSync(
+  path.resolve(__dirname, 'schema.proto'),
+  DEFAULT_RPC_CONFS
 )
 
-export const RpcService: any = grpc.loadPackageDefinition(packageDefinition).RpcService
+export const EventsRpcService: any = grpc.loadPackageDefinition(eventsPackageDefinition).RpcService
 
-export default ({ repository, logger, cache }: any) => {
-  const grpcServer = new grpc.Server({
-    'grpc.default_compression_level': 4,
-  })
+export default (context: IContext) => {
+  const grpcServer = new grpc.Server()
 
-  grpcServer.addService(RpcService.service, {
-    Ping: async (call: any, callback: any) => {
-      callback(null, { value: 'PONG' })
-    },
-    Welcome: async (call: any, callback: any) => {
-      const log = logger(
-        call?.metadata?.internalRepr['x-request-id'],
-        'grpcServer::RpcService::welcome',
-        call.request,
-      )
-
-      try {
-        const controller = new WelcomeController(repository, log, cache)
-
-        callback(null, await controller.getMessage(call.request))
-      } catch (err: any) {
-        log.error(err)
-
-        callback({ code: grpc.status.INTERNAL, message: err.message })
-      }
-    },
-  })
+  grpcServer.addService(EventsRpcService.service, EventsImplementation(context))
 
   return grpcServer
 }

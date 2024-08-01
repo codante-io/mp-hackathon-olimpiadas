@@ -1,10 +1,7 @@
-import { 
-  IGetEventsPayload,
-  IGetEventsResponse,
-} from './Events'
+import { IGetEventsResponse } from './Events'
 
 export interface IEventsRepository {
-  getEvents(payload: IGetEventsPayload): Promise<IGetEventsResponse>
+  getEvents(payload: string): Promise<IGetEventsResponse>
 }
 
 export default interface IRepository {
