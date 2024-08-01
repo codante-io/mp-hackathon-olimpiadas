@@ -1,40 +1,42 @@
-import { makeExecutableSchema } from '@graphql-tools/schema'
-import { mergeTypeDefs, mergeResolvers } from '@graphql-tools/merge'
-import { loadFilesSync } from '@graphql-tools/load-files'
-import { join } from 'path'
+import express, { Express } from 'express'
+import { NoSchemaIntrospectionCustomRule } from 'graphql'
+import { graphqlHTTP } from 'express-graphql'
+import bodyParser from 'body-parser'
+import compression from 'compression'
+import helmet from 'helmet'
+import cors from 'cors'
 
-import { GraphqlAdapter } from '../../../adapters'
-import { WelcomeController } from '../../../controllers'
-import { DateTime } from 'luxon'
-
-export const baseSchema = loadFilesSync(join(__dirname, 'base.gql'))
-export const typeDefs = loadFilesSync(join(__dirname, 'typedefs.gql'))
+import schema from './schema'
+import { IContext } from '../../../interfaces'
 
 /* istanbul ignore next */
-export const resolvers = {
-  Query: {
-    welcome: async (_: any, args: any, context: any) => {
-      const controller = new WelcomeController(context.repository, context.log, context.cache)
+const isProd = process.env.NODE_ENV === 'production'
 
-      return GraphqlAdapter.perform(controller.getMessage.bind(controller), args, context)
-    },
-    health: () => {
-      return {
-        uptime: process.uptime(),
-        timestamp: DateTime.now().toISO(),
-      }
-    },
-  },
+export default ({ repository }: IContext): Express => {
+  const server = express()
+
+  server.use(bodyParser.json())
+  server.use(compression())
+
+  /* istanbul ignore next */
+  if (isProd) {
+    server.use(cors())
+    server.use(helmet())
+  }
+
+  /* istanbul ignore next */
+  server.use(
+    '/graphql',
+    graphqlHTTP(async () => ({
+      schema,
+      context: {
+        repository,
+      },
+      customFormatErrorFn: (err: Error) => err,
+      validationRules: isProd ? [NoSchemaIntrospectionCustomRule] : [],
+      graphiql: !isProd,
+    }))
+  )
+
+  return server
 }
-
-/* istanbul ignore next */
-const baseResolvers = {
-  Query: { ping: () => 'PONG' },
-  Mutation: { _empty: () => '' },
-}
-
-/* istanbul ignore next */
-export default makeExecutableSchema({
-  typeDefs: mergeTypeDefs([baseSchema, typeDefs]),
-  resolvers: mergeResolvers([baseResolvers, resolvers]),
-})
