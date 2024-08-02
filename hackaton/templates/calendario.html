@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for jogo in requisicao %}
+        <p>{{ jogo['detailed_event_name'] }}</p>
+        {% for competidor in  jogo['competitors'] %}
+             {{competidor['competitor_name']}} 
+        {% endfor %}
+        {{ jogo['day'] }}
+        <hr>
+    {% endfor %}
+</body>
+</html>
