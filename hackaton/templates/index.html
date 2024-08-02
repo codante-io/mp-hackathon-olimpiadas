@@ -3,11 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/styles.css">
     <title>Site olimpiadas</title>
 </head>
 <body>
-    {%for item in countries%}
-        <h1>{{item}}</h1>
-    {%endfor%}
+    <header class="header">
+        <nav class="header-nav">
+            <a class="btn-header" href="">Calendário</a>
+            <img class="image" src="{{url_for('static', filename='olimpiada-101.png')}}" alt="Imagem olimpiadas">
+            <a class="btn-header" href="">Resultados</a>
+        </nav>
+        
+    </header>
+    <section class="container">
+        <table class="container-tbl">
+            <thead  >
+                <tr >
+                    <th>País</th>
+                    <th>Medalhas</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody >
+                {%for item in countries%}
+                <tr>
+                    <td>{{item['nome']}}</td>
+                    <td>{{item['gold']}} {{item['silver']}} {{item['bronze']}}</td>
+                    <td>{{item['medalha']}}</td>
+                </tr>
+                    
+                {%endfor%}
+            </tbody>
+            
+        </table>
+    </section>
+    
+        
+    
 </body>
 </html>

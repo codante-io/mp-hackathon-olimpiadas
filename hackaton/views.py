@@ -12,8 +12,8 @@ def home():
 
         for item in data['data']:
             
-            countries.append({'nome': item['name'], 'medalha': item['total_medals']})
+            countries.append({'nome': item['name'], 'gold': item['gold_medals'], 'silver': item['silver_medals'], 'bronze': item['bronze_medals'],'medalha': item['total_medals']})
 
-            countries_sort = sorted(countries, key=lambda x: x['medalha'], reverse=True)  
+            countries_sort = sorted(countries, key=lambda x: x['gold'], reverse=True)  
 
     return render_template('index.html', countries = countries_sort)
