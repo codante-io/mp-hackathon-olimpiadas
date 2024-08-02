@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Zain:wght@200;300;400;700;800;900&display=swap');
 
 body{
-    background-color: #D1E2F8;
+    background-color: #012a4a;
     margin: 0%;
     padding: 0%;
 }
 .header{
-    background-color: #1E212B;
+    background-color: #89c2d9;
     width: auto;
-    padding: 1%;
+    padding: 0.75% 5% 0.75% 0;
 }
 .header-nav{
     display: flex;
@@ -23,29 +23,36 @@ body{
     font-weight: 600;
     color: #F7F6F4;
 }
+.btn-header:hover{
+    color: #ED7632;
+}
 .image{
     height: 5%;
     width: 5%;
 }
 .container{
+    border-collapse: collapse;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 75vh;
+    overflow-y: auto;
 }
 
 .container-tbl {  
-    background-color: #1E212B; 
+    background-color: #012a4a;  
     width: 60%;
-    margin: 3% 0 0 0;
+    margin: 1% 0 0 0;
     border-collapse: separate;
     border-spacing: 2vh;
-    border-radius: 0;
+    border-radius: 2vh;
     overflow: hidden;
+    
+    
 }
 
 .container-tbl-medals{
-
     width: 10%;
 }
 .medals{
@@ -61,21 +68,54 @@ body{
     font-weight: 600;
     background-color: #ED7632;
     color: #ffffff;
-    text-align: left;
+    text-align: center;
     
 }
 
 .container-tbl th, .container-tbl td {
     padding: 1.5% 2%;
     border-collapse: separate;
-    border-radius: 7% 7% 0% 5%;
+    border-radius: 1vh;
 }
 
 .container-tbl tbody tr {
     font-family: "Montserrat", sans-serif;
     font-size: 120%;
     color: #1E212B ;
-    background-color: #F6F2B0;
+    background-color: #f4f1de;
+
+}
+.container-tbl tbody tr td{
+    text-align: center;
+    vertical-align: middle;
+    
+}
+.container-tbl tbody tr td:nth-child(2){
+    text-align: left;
+    vertical-align: middle;
+    
+}
+.background-image{
+    border-radius: 2vh;
+    transform: translate(10%, 6%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100%;
+    z-index: -1; /* Mantém a imagem atrás do conteúdo */
+    overflow: hidden;
+    opacity: 85%;
+}
+.footer-text{
+    background-color: #012a4a;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: #F7F6F4;
+    font-family: "Zain", sans-serif;
+    font-size: 200%;
+    font-weight: 600;
 
 }
 
