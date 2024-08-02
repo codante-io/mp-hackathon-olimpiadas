@@ -20,7 +20,15 @@
             <thead  >
                 <tr >
                     <th>País</th>
-                    <th>Medalhas</th>
+                    <th class="container-tbl-medals">
+                        <img class="medals" src="{{url_for('static', filename='medalha-de-ouro.png')}}" alt="">
+                    </th>
+                    <th class="container-tbl-medals">
+                        <img class="medals" src="{{url_for('static', filename='medalha-de-prata.png')}}" alt="">
+                    </th>
+                    <th class="container-tbl-medals">
+                        <img class="medals" src="{{url_for('static', filename='medalha-de-bronze.png')}}" alt="">
+                    </th>
                     <th>Total</th>
                 </tr>
             </thead>
@@ -28,7 +36,16 @@
                 {%for item in countries%}
                 <tr>
                     <td>{{item['nome']}}</td>
-                    <td>{{item['gold']}} {{item['silver']}} {{item['bronze']}}</td>
+                    <td>
+                        {{item['gold']}}
+                    </td>
+                    <td>
+                        {{item['silver']}} 
+                    </td>
+                    <td>
+                        {{item['bronze']}}
+                    </td>
+                    
                     <td>{{item['medalha']}}</td>
                 </tr>
                     

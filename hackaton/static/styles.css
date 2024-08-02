@@ -36,12 +36,23 @@ body{
 
 .container-tbl {  
     background-color: #1E212B; 
-    width: 50%;
+    width: 60%;
     margin: 3% 0 0 0;
     border-collapse: separate;
     border-spacing: 2vh;
     border-radius: 0;
     overflow: hidden;
+}
+
+.container-tbl-medals{
+
+    width: 10%;
+}
+.medals{
+    padding-left: 20%;
+    display: block;
+    height: auto;
+    width: 50%;
 }
 
 .container-tbl thead tr {   
