@@ -22,6 +22,6 @@ response = requests.get(url)
 if response.status_code == 200:
     data = response.json()
 
-    for item in data():
+    for item in data['data']:
         if item['id'] == 'BRA':
             print(item)
