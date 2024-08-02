@@ -4,11 +4,18 @@ body{
     background-color: #012a4a;
     margin: 0%;
     padding: 0%;
+    box-sizing: border-box;
 }
+/* .centralize{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+} */
 .header{
     background-color: #89c2d9;
     width: auto;
-    padding: 0.75% 5% 0.75% 0;
+    padding: 0.75% 0% 0.75% 0;
 }
 .header-nav{
     display: flex;
@@ -36,20 +43,17 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 75vh;
-    overflow-y: auto;
-}
+}   
 
 .container-tbl {  
     background-color: #012a4a;  
     width: 60%;
-    margin: 1% 0 0 0;
-    border-collapse: separate;
+    margin: 5% 0 0 0;
     border-spacing: 2vh;
     border-radius: 2vh;
-    overflow: hidden;
-    
-    
+    overflow-y: auto;
+    max-height: 75vh;
+    display: block;
 }
 
 .container-tbl-medals{
@@ -73,7 +77,7 @@ body{
 }
 
 .container-tbl th, .container-tbl td {
-    padding: 1.5% 2%;
+    padding: 1% 1%;
     border-collapse: separate;
     border-radius: 1vh;
 }
@@ -94,8 +98,26 @@ body{
     text-align: left;
     vertical-align: middle;
     
+}   
+.container-tbl::-webkit-scrollbar {
+    width: 1rem;
+    height: 1rem;
 }
+
+.container-tbl::-webkit-scrollbar-track {
+    background: #012a4a; /* Cor do fundo da barra de rolagem */
+    border-radius: 0.2rem;
+}
+
+.container-tbl::-webkit-scrollbar-thumb {
+    background-color: #ED7632; /* Cor da "thumb" da barra de rolagem */
+    border-radius: 1rem;
+    border: 3px solid #012a4a; /* Adiciona um espaço entre a "thumb" e a barra */
+}
+
 .background-image{
+    display: flex;
+    justify-content: center;
     border-radius: 2vh;
     transform: translate(10%, 6%);
     position: fixed;
@@ -106,6 +128,7 @@ body{
     z-index: -1; /* Mantém a imagem atrás do conteúdo */
     overflow: hidden;
     opacity: 85%;
+    padding-left: 2.2%;
 }
 .footer-text{
     background-color: #012a4a;
