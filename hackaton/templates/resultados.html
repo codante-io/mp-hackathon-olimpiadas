@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for resultado in resultados %}
+        {% for competidor in resultado['competitors'] %}
+            {% if competidor["result_winnerLoserTie"] == "W" %}
+                <p>{{ resultado['discipline_name'] }} : {{ resultado['detailed_event_name'] }} - Vencedor: {{ competidor['competitor_name'] }}</p>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+
+    <a href="{{ url_for('resultados', id_pagina=id_pagina + 1) }}">
+        {% if proximo %}
+            <button> Próximo</button>
+        {% endif %}
+    </a>
+</body>
+</html>

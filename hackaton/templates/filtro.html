@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolher Esporte</title>
+</head>
+<body>
+    <form action="{{ url_for('process_selection') }}" method="post">
+        <label for="options">Escolha uma opção:</label>
+        <select name="selecao_esporte" id="options">
+            <option value="" disabled selected>Selecione um esporte</option>
+            {% for esporte in requisicao %}
+                <option value="{{ esporte['id'] }}">{{ esporte['name'] }}</option>  
+            {% endfor %}
+        </select>
+        <input type="date" name="selecao_dia" min="2024-07-24" max="2024-08-11" />
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
