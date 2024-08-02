@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/styles.css">
+    <title>Site olimpiadas</title>
+</head>
+<body>  
+    <img class="background-image" src="{{url_for('static', filename = 'paris-2024.avif')}}" alt="">
+    <header class="header">
+        <nav class="header-nav">
+            <a class="btn-header" href="">Calendário</a>
+            <img class="image" src="{{url_for('static', filename='olimpiada-101.png')}}" alt="Imagem olimpiadas">
+            <a class="btn-header" href="">Resultados</a>
+        </nav>
+        
+    </header>
+    <section class="container">
+        <table class="container-tbl">
+            <thead  >
+                <tr >
+                    <th>#</th>
+                    <th>País</th>
+                    <th class="container-tbl-medals">
+                        <img class="medals" src="{{url_for('static', filename='medalha-de-ouro.png')}}" alt="">
+                    </th>
+                    <th class="container-tbl-medals">
+                        <img class="medals" src="{{url_for('static', filename='medalha-de-prata.png')}}" alt="">
+                    </th>
+                    <th class="container-tbl-medals">
+                        <img class="medals" src="{{url_for('static', filename='medalha-de-bronze.png')}}" alt="">
+                    </th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody >
+                {%for item in countries%}
+                <tr>
+                    <td>{{item['rank']}}</td>
+                    <td>{{item['nome']}}</td>
+                    <td>
+                        {{item['gold']}}
+                    </td>
+                    <td>
+                        {{item['silver']}} 
+                    </td>
+                    <td>
+                        {{item['bronze']}}
+                    </td>
+                    
+                    <td>{{item['medalha']}}</td>
+                </tr>
+                    
+                {%endfor%}
+            </tbody>
+            
+        </table>
+    </section>
+    <footer class="footer-text">
+
+    </footer>
+</body>
+</html>
