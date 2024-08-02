@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/styles.css">
+    <title>Site olimpiadas</title>
+</head>
+<body> 
+    <img class="background-image" src="{{url_for('static', filename = 'paris-2024.avif')}}" alt="">
+    <header class="header">
+        <nav class="header-nav">
+            
+            <a class="btn-header" href="">Calendário</a>
+            <a class="header-nav" href="{{url_for('home')}}">
+                <img class="image" src="{{url_for('static', filename='olimpiada-101.png')}}" alt="Imagem olimpiadas">
+            </a>
+            <a class="btn-header" href="">Resultados</a>
+        </nav>
+        
+    </header>
+    {%block content%}
+    {%endblock%}
+
+    <footer class="footer-text">
+
+    </footer>
+</body>
+</html>
