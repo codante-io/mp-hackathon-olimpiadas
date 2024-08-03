@@ -27,27 +27,19 @@ def home():
 def calendário():
     day = request.args.get('day', datetime.now().strftime('%Y-%m-%d'))
     disciplines = get_disciplines()
+    actual = request.args.get('actual', 1)
 
-    url = f'https://apis.codante.io/olympic-games/events?date={day}'
 
-    req = requests.get(url)
-    req = req.json()
+    agenda, final_url, show_more = get_agenda(actual, day)
     
-    agenda = []
-    while url != None:
-        agenda.extend([game for game in req['data']]) #Pega todos os jogos
+    if show_more:
+        actual = casting_actual(final_url, day)
 
-        if req['links']['next'] != None:
-            url = f"{req['links']['next']}&date={day}"
-            req = requests.get(url)
-            req = req.json()
-        else:
-            url = None
 
     show_next, show_previous, day_plus_one, day_minus_one = check_if_days_are_valid(day)
 
     context = {"agenda": agenda, "day_plus_one": day_plus_one, "day_minus_one": day_minus_one,
-                "show_previous": show_previous, "show_next": show_next, "disciplines": disciplines}
+                "show_previous": show_previous, "show_next": show_next, "disciplines": disciplines, "actual": actual, "day":day, "show_more":show_more}
 
     return render_template('agenda.html', **context)
 
