@@ -34,7 +34,12 @@
             <button>Mostrar mais</button>
         </a>
     {% endif %}
-   
+    {% if (actual - 10) > 0 %}
+        <a href="{{ url_for('calendário', day=day, actual=(actual-10)) }}">
+            <button>Mostrar menos</button>
+        </a>
+    {% endif %}
+   <br>
     {% if show_previous %}
         <a href="{{ url_for('calendário', day=day_minus_one) }}">
             <button>Anterior</button>
