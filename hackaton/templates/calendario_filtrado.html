@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    {% for jogo in requisicao %}
+    {% for jogo in agenda %}
         <p>{{ jogo['detailed_event_name'] }}</p>
         {% for competidor in  jogo['competitors'] %}
              {{competidor['competitor_name']}} 
@@ -14,5 +14,18 @@
         {{ jogo['day'] }}
         <hr>
     {% endfor %}
+
+    
+    {% if show_previous %}
+        <a href="{{ url_for('calendario_filtrado', day=day_minus_one, sport=sport) }}">
+            <button>Anterior</button>
+        </a>
+    {% endif %}
+    {% if show_next %}
+        <a href="{{ url_for('calendario_filtrado', day=day_plus_one, sport=sport) }}">
+            <button>Próximo</button>
+        </a>
+    {% endif %}
+
 </body>
 </html>
