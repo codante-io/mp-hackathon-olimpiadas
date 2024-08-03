@@ -34,7 +34,7 @@ def calendário():
     
     if show_more:
         actual = casting_actual(final_url, day)
-
+    agenda = time_to_saopaulo(agenda)
 
     show_next, show_previous, day_plus_one, day_minus_one = check_if_days_are_valid(day)
 
