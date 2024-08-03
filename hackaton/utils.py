@@ -1,5 +1,6 @@
 import requests
 from datetime import datetime, timedelta
+import pytz
 
 
 FINAL_DAY = datetime(2024, 8, 11)
@@ -54,3 +55,21 @@ def casting_actual(url, day):
     actual = actual.replace(f'&date={day}', '')
     actual = int(actual)
     return actual
+
+
+def time_to_saopaulo(agenda):
+    destination_timezone = pytz.timezone('America/Sao_Paulo')
+    for event in agenda:
+            try:
+                # Converte a string para datetime com o fuso horário original
+                original_dt = datetime.fromisoformat(event['start_date'])
+
+                # Converte para o fuso horário de destino
+                localized_dt = original_dt.astimezone(destination_timezone)
+
+                # Formata a data no formato desejado
+                event['start_date'] = localized_dt.strftime('%Y-%m-%d %H:%M:%S')
+
+            except (ValueError, TypeError):
+               pass
+    return agenda
