@@ -1,14 +1,32 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/styles.css">
-    <title>Document</title>
-</head>
-<body>
+{%extends "template.html"%}
+{%block content%}
+    
+    <div class="filter">
+        <form action="{{ url_for('calendario_filtrado') }}" method="post">
+            <label for="options">Escolha uma opção:</label>
+            <select name="selecao_esporte" id="options">
+                <option value="" disabled selected>Selecione um esporte</option>
+                {% for sport in disciplines %}
+                    <option value="{{ sport['id'] }}">{{ sport['name'] }}</option>  
+                {% endfor %}
+            </select>
+            <button type="submit">Enviar</button>
+        </form>
+
+        {% if show_previous %}
+        <a href="{{ url_for('calendário', day=day_minus_one) }}">
+            <button>Anterior</button>
+        </a>
+        {% endif %}
+        {% if show_next %}
+        <a href="{{ url_for('calendário', day=day_plus_one) }}">
+            <button>Próximo</button>
+        </a>
+        {% endif %}
+    </div>
+       
     <section class="container">
-        <table class="container-tbl">
+        <table class="schedule">
             <thead  >
                 <tr >
                     <th>#</th>
@@ -64,3 +82,9 @@
     </form>
 </body>
 </html>
+   
+    
+    
+
+    
+    {%endblock%}

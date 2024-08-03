@@ -141,3 +141,65 @@ body{
 
 }
 
+/*AGENDA*/
+.filter{
+    width: 88%;
+    display: flex;
+    gap: 15%;
+    margin: 2% auto 0.5% auto;
+    justify-content: right;
+}
+.schedule {  
+    background-color: #012a4a;  
+    width: 88%;
+    margin: 0% 0 0 0;
+    border-spacing: 0.6rem;
+    border-radius: 1.25rem;
+    overflow-y: auto;
+    max-height: 48rem;
+    display: block;
+}
+
+.schedule thead tr {   
+    font-size: 120%;
+    font-family: "Roboto Mono", monospace;
+    font-weight: 600;
+    background-color: #ED7632;
+    color: #ffffff;
+    text-align: center;
+    
+}
+
+.schedule th, .schedule td {
+    padding: 1% 1%;
+    border-collapse: separate;
+    border-radius: 1vh;
+}
+
+.schedule tbody tr {
+    font-family: "Montserrat", sans-serif;
+    font-size: 120%;
+    color: #1E212B ;
+    background-color: #f4f1de;
+
+}
+.schedule tbody tr td{
+    text-align: center;
+    vertical-align: middle;
+    
+}
+.schedule::-webkit-scrollbar {
+    width: 1rem;
+    height: 1rem;
+}
+
+.schedule::-webkit-scrollbar-track {
+    background: #012a4a; /* Cor do fundo da barra de rolagem */
+    border-radius: 0.2rem;
+}
+
+.schedule::-webkit-scrollbar-thumb {
+    background-color: #ED7632; /* Cor da "thumb" da barra de rolagem */
+    border-radius: 1rem;
+    border: 3px solid #012a4a; /* Adiciona um espaço entre a "thumb" e a barra */
+}
