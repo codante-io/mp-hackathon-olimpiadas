@@ -25,3 +25,32 @@ def check_if_days_are_valid(day):
     day_plus_one = day_plus_one.strftime('%Y-%m-%d')
 
     return show_next, show_previous, day_plus_one, day_minus_one
+
+
+def get_agenda(actual, day):
+    show_more = True
+    url = f'https://apis.codante.io/olympic-games/events?page={actual}&date={day}'
+    req = requests.get(url)
+    req = req.json()
+    agenda = []
+    total_pages = 0
+    while url != None and total_pages<5:
+        agenda.extend([game for game in req['data']]) #Pega todos os jogos
+        req = requests.get(url)
+        req = req.json()
+
+        if req['links']['next'] != None:
+            url = f"{req['links']['next']}&date={day}"
+            total_pages +=1
+        else:
+            url = None
+            show_more = False
+
+    return agenda, url, show_more
+
+
+def casting_actual(url, day):
+    actual = url.replace('https://apis.codante.io/olympic-games/events?page=', '')
+    actual = actual.replace(f'&date={day}', '')
+    actual = int(actual)
+    return actual

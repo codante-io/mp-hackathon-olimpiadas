@@ -47,6 +47,11 @@
             
         </table>
     </section>
+    {% if show_more %}
+        <a href="{{ url_for('calendário', day=day, actual=actual) }}">
+            <button>Mostrar mais</button>
+        </a>
+    {% endif %}
    
     
     
