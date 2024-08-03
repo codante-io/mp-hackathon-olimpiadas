@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session, send_from_directory
+from datetime import datetime, timedelta
 import json, requests
 from main import app
 from config import *
+from utils import *
 
 @app.route('/')
 def home(): 
@@ -20,31 +22,59 @@ def home():
     return render_template('index.html', countries = countries_sort)
 
 
-@app.route('/filtro')
-def filtro():
-    requisicao = requests.get('https://apis.codante.io/olympic-games/disciplines')
-    requisicao = requisicao.json()
-    requisicao = requisicao['data']
+
+@app.route('/calendario', methods=['POST', 'GET'])
+def calendário():
+    day = request.args.get('day', datetime.now().strftime('%Y-%m-%d'))
+    disciplines = get_disciplines()
+
+    url = f'https://apis.codante.io/olympic-games/events?date={day}'
+
+    req = requests.get(url)
+    req = req.json()
     
-    return render_template('filtro.html', requisicao=requisicao)
+    agenda = []
+    while url != None:
+        agenda.extend([game for game in req['data']]) #Pega todos os jogos
+
+        if req['links']['next'] != None:
+            url = f"{req['links']['next']}&date={day}"
+            req = requests.get(url)
+            req = req.json()
+        else:
+            url = None
+
+    show_next, show_previous, day_plus_one, day_minus_one = check_if_days_are_valid(day)
+
+    context = {"agenda": agenda, "day_plus_one": day_plus_one, "day_minus_one": day_minus_one,
+                "show_previous": show_previous, "show_next": show_next, "disciplines": disciplines}
+
+    return render_template('agenda.html', **context)
 
 
-@app.route('/calendario-filtrado/', methods=['POST'])
-def process_selection():
-    form_data = request.form.to_dict()
-    esporte = None
-    dia = None
-    try:
-        esporte = form_data.get('selecao_esporte')
-        dia = form_data.get('selecao_dia')
 
-    except:
-        pass
-    
-    requisicao = requests.get(f'https://apis.codante.io/olympic-games/events?date={dia}&discipline={esporte}')
-    requisicao = requisicao.json()
-    requisicao = requisicao['data']
-    return render_template('calendario.html', requisicao=requisicao)
+@app.route('/agenda-modalidade', methods=['POST', 'GET'])
+def calendario_filtrado():
+    day = request.args.get('day', datetime.now().strftime('%Y-%m-%d')) 
+    sport = request.args.get('sport')
+
+    if request.method == 'POST':
+        form_data = request.form.to_dict()
+        if form_data.get('selecao_esporte'):
+            sport = form_data.get('selecao_esporte')
+            
+        else:
+            return redirect('calendario')
+
+    show_next, show_previous, day_plus_one, day_minus_one = check_if_days_are_valid(day)
+
+    agenda = requests.get(f'https://apis.codante.io/olympic-games/events?date={day}&discipline={sport}')
+    agenda = agenda.json()
+    agenda = agenda['data']
+
+    context = {"agenda": agenda, "day_plus_one": day_plus_one, "day_minus_one": day_minus_one,
+            "show_previous": show_previous, "show_next": show_next, "sport": sport}
+    return render_template('calendario_filtrado.html', **context)
 
 
 
@@ -69,3 +99,33 @@ def resultados(id_pagina):
 
     context = {"id_pagina": id_pagina, "proximo": proximo, "resultados":resultados}
     return render_template('resultados.html', **context)
+
+
+
+
+
+
+
+
+
+
+@app.route('/teste')
+def teste():
+    day = request.args.get('day', '2024-08-02')  # Obtém a data do parâmetro da query string
+    page = int(request.args.get('page', 1))  # Obtém o número da página, padrão é 1
+    per_page = 10  # Número de eventos por página
+
+    url = f'https://apis.codante.io/olympic-games/events?date={day}&page={page}'
+    response = requests.get(url)
+    data = response.json()
+
+    agenda = [game for game in data['data'] if game['status'] != "Finished"]
+    has_next_page = data['links'].get('next') is not None
+    
+    
+    
+
+    context = {"agenda": agenda, "day": day,
+            "page": page, "has_next_page": has_next_page}
+
+    return render_template('agenda.html', **context)
