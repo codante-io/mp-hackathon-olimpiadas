@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+{% include  "partials/head.html" %}
+
+<body> 
+    {% include "partials/header.html" %}
+    <img class="background-image" src="{{url_for('static', filename='images/paris-2024.avif')}}" alt="">
+
+    
+    {%block content%}
+    {%endblock%}
+
+    <footer class="footer-text">
+
+    </footer>
+</body>
+</html>
