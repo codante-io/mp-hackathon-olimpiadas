@@ -7,7 +7,7 @@
             <select name="selecao_esporte" id="options">
                 <option value="" disabled selected>Selecione um esporte</option>
                 {% for sport in disciplines %}
-                    <option value="{{ sport['id'] }}">{{ sport['name'] }}</option>  
+                    <option value="{{ sport['id'] }}">{{ translations.get(sport['name']) }}</option>  
                 {% endfor %}
             </select>
             <button type="submit">Enviar</button>
@@ -37,7 +37,7 @@
             <tbody >
                 {%for item in agenda%}
                 <tr>
-                    <td>{{item['discipline_name']}}</td>
+                    <td>{{ translations.get(item['discipline_name']) }}</td>
                     <td>{{item['detailed_event_name']}}</td>
                     <td>{{ item['start_date'] }}
                 </tr>
@@ -80,11 +80,4 @@
         </select>
         <button type="submit">Enviar</button>
     </form>
-</body>
-</html>
-   
-    
-    
-
-    
-    {%endblock%}
+{%endblock%}

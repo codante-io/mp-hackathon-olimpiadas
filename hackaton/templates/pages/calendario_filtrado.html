@@ -1,31 +1,68 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {% for jogo in agenda %}
-        <p>{{ jogo['detailed_event_name'] }}</p>
-        {% for competidor in  jogo['competitors'] %}
-             {{competidor['competitor_name']}} 
-        {% endfor %}
-        {{ jogo['day'] }}
-        <hr>
-    {% endfor %}
-
+{%extends "partials/template.html"%}
+{%block content%}
     
-    {% if show_previous %}
-        <a href="{{ url_for('calendario_filtrado', day=day_minus_one, sport=sport) }}">
+    <div class="filter">
+        <form action="{{ url_for('calendario_filtrado') }}" method="post">
+            <label for="options">Escolha uma opção:</label>
+            <select name="selecao_esporte" id="options">
+                <option value="" disabled selected>Selecione um esporte</option>
+                {% for sport in disciplines %}
+                    <option value="{{ sport['id'] }}">{{ translations.get(sport['name']) }}</option>  
+                {% endfor %}
+            </select>
+            <button type="submit">Enviar</button>
+        </form>
+
+        {% if show_previous %}
+        <a href="{{ url_for('calendário', day=day_minus_one) }}">
             <button>Anterior</button>
         </a>
-    {% endif %}
-    {% if show_next %}
-        <a href="{{ url_for('calendario_filtrado', day=day_plus_one, sport=sport) }}">
+        {% endif %}
+        {% if show_next %}
+        <a href="{{ url_for('calendário', day=day_plus_one) }}">
             <button>Próximo</button>
         </a>
+        {% endif %}
+    </div>
+       
+    <section class="container">
+        <table class="schedule">
+            <thead  >
+                <tr >
+                    <th>#</th>
+                    <th>País</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody >
+                {%for item in agenda%}
+                <tr>
+                    <td>{{ translations.get(item['discipline_name']) }}</td>
+                    <td>{{ item['detailed_event_name'] }}</td>
+                    <td>{{ item['start_date'] }}
+                    <td>
+                        {% if len(item['competitors']) < 3 %}
+                            {% for competidor in item['competitors'] %}
+                                {{ competidor['competitor_name'] }} 
+                            {% endfor %}
+                        {% endif %}
+                    </td>
+                        
+                </tr>
+                    
+                {%endfor%}
+            </tbody>
+            
+        </table>
+    </section>
+    {% if show_more %}
+        <a href="{{ url_for('calendário', day=day, actual=actual) }}">
+            <button>Mostrar mais</button>
+        </a>
     {% endif %}
-
-</body>
-</html>
+    {% if (actual - 10) > 0 %}
+        <a href="{{ url_for('calendário', day=day, actual=(actual-10)) }}">
+            <button>Mostrar menos</button>
+        </a>
+    {% endif %}
+{%endblock%}
