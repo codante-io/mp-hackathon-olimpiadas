@@ -19,7 +19,8 @@ def home():
             countries.append({'rank': item['rank'], 'nome': item['name'], 'gold': item['gold_medals'], 'silver': item['silver_medals'], 'bronze': item['bronze_medals'],'medalha': item['total_medals']})
 
             countries_sort = sorted(countries, key=lambda x: x['gold'], reverse=True)  
-    return render_template('index.html', countries = countries_sort)
+        
+    return render_template('pages/index.html', countries = countries_sort)
 
 
 
@@ -41,7 +42,7 @@ def calendário():
     context = {"agenda": agenda, "day_plus_one": day_plus_one, "day_minus_one": day_minus_one,
                 "show_previous": show_previous, "show_next": show_next, "disciplines": disciplines, "actual": actual, "day":day, "show_more":show_more}
 
-    return render_template('agenda.html', **context)
+    return render_template('pages/agenda.html', **context)
 
 
 
@@ -66,7 +67,7 @@ def calendario_filtrado():
 
     context = {"agenda": agenda, "day_plus_one": day_plus_one, "day_minus_one": day_minus_one,
             "show_previous": show_previous, "show_next": show_next, "sport": sport}
-    return render_template('calendario_filtrado.html', **context)
+    return render_template('pages/calendario_filtrado.html', **context)
 
 
 
@@ -90,7 +91,7 @@ def resultados(id_pagina):
             resultados.append(i)
 
     context = {"id_pagina": id_pagina, "proximo": proximo, "resultados":resultados}
-    return render_template('resultados.html', **context)
+    return render_template('pages/resultados.html', **context)
 
 
 
