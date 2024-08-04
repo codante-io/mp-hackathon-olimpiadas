@@ -28,9 +28,11 @@ def check_if_days_are_valid(day):
     return show_next, show_previous, day_plus_one, day_minus_one
 
 
-def get_agenda(actual, day):
+def get_agenda(actual, day, sport=None):
     show_more = True
     url = f'https://apis.codante.io/olympic-games/events?page={actual}&date={day}'
+    if sport:
+        url = f'https://apis.codante.io/olympic-games/events?page={actual}&date={day}&discipline={sport}'
     req = requests.get(url)
     req = req.json()
     agenda = []
@@ -42,6 +44,8 @@ def get_agenda(actual, day):
 
         if req['links']['next'] != None:
             url = f"{req['links']['next']}&date={day}"
+            if sport:
+                url = f"{url}&discipline={sport}"
             total_pages +=1
         else:
             url = None
