@@ -1,7 +1,9 @@
 const App = () => {
   return (
     <>
-      <div className="w-screen h-screen bg-slate-950">fortnite</div>
+      <div className="w-screen h-screen bg-black">
+        <p className="text-white">Hello World</p>
+      </div>
     </>
   )
 }
