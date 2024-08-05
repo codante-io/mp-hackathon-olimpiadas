@@ -38,7 +38,7 @@ def get_agenda(actual, day, sport=None):
     agenda = []
     total_pages = 0
     while url != None and total_pages<5:
-        agenda.extend([game for game in req['data']]) #Pega todos os jogos
+        agenda.extend(game for game in req['data']) #Pega todos os jogos
         req = requests.get(url)
         req = req.json()
 
@@ -77,3 +77,4 @@ def time_to_saopaulo(agenda):
             except (ValueError, TypeError):
                pass
     return agenda
+
