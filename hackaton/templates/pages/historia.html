@@ -1,0 +1,50 @@
+{% include 'partials/head.html' %}
+{% include 'partials/header.html' %}
+<title>OlympApp - História</title>
+
+
+<body class='hide-sidebar'>
+    <div class="custom-container hide-sidebar">
+        <div class="custom-content-section">
+            <img src="{{ url_for('static', filename='images/01-tokyo-olympics.jpg') }}" alt="Oympics Paris 2024" class="custom-image">
+            <div class="custom-text">
+                <h2 style="text-align: center; color: #d16426; font-family: 'Oswald', sans-serif;">COMO SURGIRAM AS OLIMPÍADAS?</h2>
+                <p style="color: #e6dfdc">As Olimpíadas surgiram na Grécia Antiga, por volta de 776 a.C., como parte de um festival religioso em honra a Zeus, o deus supremo da mitologia grega. Realizados na cidade de Olímpia, os jogos reuniam atletas de várias cidades-estado gregas para competir em diversas modalidades, como corrida, luta e pentatlo. Esses eventos eram tão importantes que, durante os jogos, todas as guerras eram suspensas para garantir a paz e a segurança dos participantes! Embora tenham sido interrompidos no século IV d.C., os Jogos Olímpicos foram revividos na era moderna, em 1896, por Pierre de Coubertin, e se tornaram o maior evento esportivo do mundo.</p>
+            </div>
+        </div>
+        
+        <div class="custom-content-section custom-reverse" >
+            <div class="custom-text">
+                <h2 style="text-align: center; color: #d16426; font-family: 'Oswald', sans-serif;">PARIS 2024!</h2>
+                <p style="color: #e6dfdc;">Marcando a terceira vez que a cidade recebe os Jogos Olímpicos, o evento irá ocorrer entre os dias de 26 de julho e 11 de agosto de 2024! Mais de 10.500 atletas divididos entre 206 países irão participar do evento. Dentre os 32 esportes que serão disputados, as Olimpíadas de Paris 2024 marcam a estreia de uma nova modalidade, o Breaking Dance! Junte-se a nós e acompanhe esse evento mágnifico, quem com certeza irá nos privilegiar com diversas emoções, experiências inesquecíveis e vistas fantásticas!</p>
+            </div>
+            <img src="{{ url_for('static', filename='images/opening-cerimony.avif') }}" alt="PHOTOGRAPH FROM SANKEI ARCHIVE, GETTY" class="custom-image">
+        </div>
+
+        <div class="custom-content-section" data-aos="fade-up">
+            <img src="{{ url_for('static', filename='images/usa-team.jpg') }}" alt="US Olympic Team by Getty Images 1" class="custom-image">
+            <div class="custom-text">
+                <h2 style="text-align: center; color: #d16426; font-family: 'Oswald', sans-serif;">QUEM TEM MAIS MEDALHAS?</h2>
+                <p style="color: #e6dfdc">O país com o maior número de medalhas na história das Olimpíadas é os Estados Unidos da América! De acordo com o Comitê Olímpico Internacional (COI), os USA já contam com {{ 2638 + usa_medals}} premiações, sendo {{ 1065 + usa_gold_medals }} delas de ouro! O maior campeão da história dos Jogos Olímpicos também é estadunidense, Michael Phelps, lenda da natação, conta com 25 medalhas olímpicas, 21 delas de ouro! O recorde de mais medalhas em uma única edição também pertence ao ex-atleta, com 8 medalhas ganhas na edição de Pequim, em 2008.</p>
+            </div>
+        </div>
+
+        <div class="custom-content-section custom-reverse last" data-aos="fade-up">
+            <div class="custom-text">
+                <h2 style="text-align: center; color: #d16426; font-family: 'Oswald', sans-serif;">E O BRASIL?</h2>
+                <p style="color: #e6dfdc;">O Brasil, até o início dos jogos em Paris, estava na 30ª colocação no ranking histórico de medalhas, sendo o 4º país das Américas, atrás de USA, Canadá e Cuba. No momento, o Brasil conta com {{150 + br_medals }}, sendo {{ 37 + br_gold_medals}} de ouro e {{ br_medals }} já nessa edição de Paris 2024! O esporte que se sobressai no Brasil é o Judô, que sozinho já foi responsável por mais de 25 medalhas na história.</p>
+            </div>
+            <img src="{{ url_for('static', filename='images/rebeca-medals.avif') }}" alt="Foto por Laurence Griffiths/Getty Images" class="custom-image">
+        </div>
+
+    </div>
+
+
+    <div class="shadow"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

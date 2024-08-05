@@ -14,12 +14,11 @@ formatted_date = datetime.now().strftime('%Y-%m-%d')
 
 #print(requisicao)
 
-url = f'https://apis.codante.io/olympic-games/disciplines'
+url = f'https://apis.codante.io/olympic-games/countries'
 req = requests.get(url)
 req = req.json()
 
-for i in req['data']:
-    print(i['name'])
+print(req)
 
 #for i in requisicao['links']:
     

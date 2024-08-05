@@ -78,8 +78,6 @@ def calendario_filtrado():
     return render_template('pages/calendario_filtrado.html', **context, len=len)
 
 
-
-
 @app.route('/resultados')
 def resultados():
     day = request.args.get('day', '2024-07-27')
@@ -99,3 +97,25 @@ def resultados():
                 "show_more":show_more, "translations": TRANSLATIONS}
 
     return render_template('pages/agenda.html', **context)
+
+@app.route('/historia')
+def historia():
+    response = requests.get(URL)
+    countries = []
+    if response.status_code == 200:
+        data = response.json()
+        for item in data['data']:
+            if item['id'] == 'USA':
+                usa_medals = item['total_medals']
+                usa_gold_medals = item['gold_medals']
+                break
+        for item in data['data']:
+            if item['id'] == 'BRA':
+                br_medals = item['total_medals']
+                br_gold_medals = item['gold_medals']
+                print(br_gold_medals)
+                break
+    
+    context = {"usa_medals": usa_medals, "usa_gold_medals": usa_gold_medals, "br_medals": br_medals, "br_gold_medals": br_gold_medals}
+
+    return render_template('pages/historia.html',**context)
