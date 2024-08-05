@@ -102,4 +102,34 @@ def resultados():
                 "show_previous": show_previous, "show_next": show_next, "disciplines": disciplines, "actual": actual, "day":day,
                 "show_more":show_more, "translations": TRANSLATIONS}
 
-    return render_template('pages/agenda.html', **context)
+    return render_template('pages/resultados.html', **context)
+
+@app.route('/resultados_filtrados', methods=['POST', 'GET'])
+def resultados_filtrados():
+    day = request.args.get('day', datetime.now().strftime('%Y-%m-%d')) 
+    sport = request.args.get('sport')
+    disciplines = get_disciplines()
+
+    if request.method == 'POST':
+        form_data = request.form.to_dict()
+        if form_data.get('selecao_esporte'):
+            sport = form_data.get('selecao_esporte')
+            
+        else:
+            return redirect('calendario')
+
+    show_next, show_previous, day_plus_one, day_minus_one = check_if_days_are_valid(day)
+
+    actual = request.args.get('actual', 1)
+
+    agenda, final_url, show_more = get_agenda(actual, day, sport)
+    
+    if show_more:
+        actual = casting_actual(final_url, day)
+    agenda = time_to_saopaulo(agenda)
+
+    context = {"agenda": agenda, "day_plus_one": day_plus_one, "day_minus_one": day_minus_one,
+            "show_previous": show_previous, "show_next": show_next, "sport": sport, "actual": actual, 
+            "translations": TRANSLATIONS, "disciplines": disciplines}
+    
+    return render_template('pages/resultados_filtrados.html', **context, len=len)

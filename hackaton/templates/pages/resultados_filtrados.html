@@ -6,7 +6,7 @@
     
     <h1 class="date">{{agenda[0]['day']}}</h1>
     <div class="filter">
-        <form action="{{ url_for('resultados_filtrados') }}" method="post">
+        <form action="{{ url_for('resultados') }}" method="post">
             <img class="filter-image" src="{{url_for('static', filename='images/filtro.png')}}" alt="">
             <select class="" name="selecao_esporte" id="options">
                 <option value="" disabled selected>Selecione um esporte</option>

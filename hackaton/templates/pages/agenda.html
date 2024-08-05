@@ -6,23 +6,23 @@
     <h1 class="date">{{agenda[0]['day']}}</h1>
     <div class="filter">
         <form action="{{ url_for('calendario_filtrado') }}" method="post">
-            <label class="filter-text" for="options">Escolha uma opção:</label>
-            <select name="selecao_esporte" id="options">
+            <img class="filter-image" src="{{url_for('static', filename='images/filtro.png')}}" alt="">
+            <select class="" name="selecao_esporte" id="options">
                 <option value="" disabled selected>Selecione um esporte</option>
                 {% for sport in disciplines %}
                     <option value="{{ sport['id'] }}">{{ translations.get(sport['name']) }}</option>  
                 {% endfor %}
             </select>
-            <button type="submit">Enviar</button>
-        </form>
+            <button type="submit">Filtrar</button>
+        </form> 
 
         {% if show_previous %}
-        <a href="{{ url_for('calendário', day=day_minus_one) }}">
+        <a href="{{ url_for('resultados', day=day_minus_one) }}">
             <button>Anterior</button>
         </a>
         {% endif %}
         {% if show_next %}
-        <a href="{{ url_for('calendário', day=day_plus_one) }}">
+        <a href="{{ url_for('resultados', day=day_plus_one) }}">
             <button>Próximo</button>
         </a>
         {% endif %}
@@ -50,49 +50,37 @@
                     {%elif item['competitors']|length == 0%}
                         TBD
                     {% else %}
+                        {%set competitors_list = []%}
                         {% for competitor in item['competitors'] %}
-                            {{ competitor['competitor_name'] }}
+                            {%if loop.index == 1%}
+                                {%set competitors_list = competitors_list.append(competitor['competitor_name'] + ' X ')%}
+                            {% else %}
+                                {%set competitors_list = competitors_list.append(competitor['competitor_name'])%}
+                            {%endif%}
                         {% endfor %}
+                        {{ competitors_list | join(' ') }}
                     {% endif %}
-                </td> 
-                    <td>{{ item['start_date'][-8:] }}
+                    </td> 
+                    <td>{{ item['start_date'][-8:] }}</td>
                 </tr>
                 {%endfor%}
             </tbody>
             
         </table>
+        
     </section>
     {% if show_more %}
-        <a href="{{ url_for('calendário', day=day, actual=actual) }}">
+        <a class="filter" href="{{ url_for('resultados', day=day, actual=actual) }}">
             <button>Mostrar mais</button>
         </a>
-    {% endif %}
-    {% if (actual - 10) > 0 %}
-        <a href="{{ url_for('calendário', day=day, actual=(actual-10)) }}">
-            <button>Mostrar menos</button>
-        </a>
-    {% endif %}
-   <br>
-    {% if show_previous %}
-        <a href="{{ url_for('calendário', day=day_minus_one) }}">
-            <button>Anterior</button>
-        </a>
-    {% endif %}
-    {% if show_next %}
-        <a href="{{ url_for('calendário', day=day_plus_one) }}">
-            <button>Próximo</button>
-        </a>
-    {% endif %}
+        {% endif %}
+        {% if (actual - 10) > 0 %}
+            <a class="filter" href="{{ url_for('resultados', day=day, actual=(actual-10)) }}">
+                <button>Mostrar menos</button>
+            </a>
+        {% endif %}
+   
     
 
-    <form action="{{ url_for('calendario_filtrado') }}" method="post">
-        <label for="options">Escolha uma opção:</label>
-        <select name="selecao_esporte" id="options">
-            <option value="" disabled selected>Selecione um esporte</option>
-            {% for sport in disciplines %}
-                <option value="{{ sport['id'] }}">{{ sport['name'] }}</option>  
-            {% endfor %}
-        </select>
-        <button type="submit">Enviar</button>
-    </form>
+    
 {%endblock%}
