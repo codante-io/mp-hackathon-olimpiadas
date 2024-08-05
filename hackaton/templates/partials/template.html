@@ -4,8 +4,9 @@
 
 <body> 
     {% include "partials/header.html" %}
+    {% block background_image %}
     <img class="background-image" src="{{url_for('static', filename='images/paris-2024.avif')}}" alt="">
-
+    {%endblock%}
     
     {%block content%}
     {%endblock%}

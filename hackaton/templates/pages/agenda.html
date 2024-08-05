@@ -1,9 +1,12 @@
 {%extends "partials/template.html"%}
+{% block background_image %}
+    <!-- Nenhuma imagem de fundo aqui -->
+{% endblock %}
 {%block content%}
-    
+    <h1 class="date">{{agenda[0]['day']}}</h1>
     <div class="filter">
         <form action="{{ url_for('calendario_filtrado') }}" method="post">
-            <label for="options">Escolha uma opção:</label>
+            <label class="filter-text" for="options">Escolha uma opção:</label>
             <select name="selecao_esporte" id="options">
                 <option value="" disabled selected>Selecione um esporte</option>
                 {% for sport in disciplines %}
@@ -25,23 +28,35 @@
         {% endif %}
     </div>
        
-    <section class="container">
+    <section class="schedule-container">
+        
         <table class="schedule">
             <thead  >
                 <tr >
-                    <th>#</th>
-                    <th>País</th>
-                    <th>Data</th>
+                    <th>Esporte</th>
+                    <th>Evento</th>
+                    <th>Competidores</th>
+                    <th>Hora</th>
                 </tr>
             </thead>
             <tbody >
                 {%for item in agenda%}
                 <tr>
                     <td>{{ translations.get(item['discipline_name']) }}</td>
-                    <td>{{item['detailed_event_name']}}</td>
-                    <td>{{ item['start_date'] }}
+                    <td>{{item['detailed_event_name']}}</td>    
+                    <td>
+                    {% if item['competitors']|length > 2%}
+                        Qualificator
+                    {%elif item['competitors']|length == 0%}
+                        TBD
+                    {% else %}
+                        {% for competitor in item['competitors'] %}
+                            {{ competitor['competitor_name'] }}
+                        {% endfor %}
+                    {% endif %}
+                </td> 
+                    <td>{{ item['start_date'][-8:] }}
                 </tr>
-                    
                 {%endfor%}
             </tbody>
             
