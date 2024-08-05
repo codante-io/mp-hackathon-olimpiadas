@@ -39,3 +39,10 @@ print(req)
 
 
 
+{% for competitor in item['competitors'] %}
+                                {%if loop.index == 1%}
+                                    {%set competitors_list = competitors_list.append(competitor['competitor_name'] + ' ' + competitor['result_mark'] + ' X ')%}
+                                {% else %}
+                                    {%set competitors_list = competitors_list.append(competitor['result_mark'] + ' ' + competitor['competitor_name'] )%}
+                                {%endif%}
+                            {% endfor %}
