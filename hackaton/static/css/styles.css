@@ -15,10 +15,14 @@ body{
     justify-content: center;
 } */
 .header{
-    background-color: rgba(93, 204, 247, 0.8);
+    background-image: url('/static/images/header-image.png');
+    background-size: cover; /* Ajusta a imagem para cobrir todo o header */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; 
     width: auto;
-    padding: 0.9% 0% 0.9% 0;
-    opacity: 67.5%;
+    padding: 0.6% 0% 0.6% 0;
+    box-shadow: 0 0 40px  rgba(6,75,127, 0.8);
+    
 }
 .header-nav{
     display: flex;
@@ -37,8 +41,8 @@ body{
 }
 .image{
     padding-right: 2%;
-    height: 10%;
-    width: 10%;
+    height: 12%;
+    width: 12%;
 }
 .container{
     border-collapse: collapse;
@@ -237,8 +241,10 @@ body{
 .custom-container {
     padding: 20px;
     max-width: 2150px;
-    margin: 80px 80px;
+    margin: 80px 80px 0px 80px;
     overflow: auto;
+    overflow: visible; /* Permite que a imagem "saia" do contêiner sem ser cortada */
+    display: inline-block;
 }
 
 .custom-content-section {
@@ -250,7 +256,15 @@ body{
 .custom-content-section img.custom-image {
     max-width: 49%;
     border-radius: 10px;
+    box-shadow: 0 0 40px rgba(6,75,127, 0.9); /* Sombra igual em todos os lados */
+    transition: transform 0.5s ease, box-shadow 0.5s ease, border-radius 0.5s ease;
     
+}
+
+.custom-image:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 63px  rgba(6,75,127, 1); /* Sombra igual em todos os lados */
+    border-radius: 15px; /* Ajuste o valor conforme o nível de arredondamento desejado */
 }
 
 .custom-content-section .custom-text {
@@ -258,7 +272,13 @@ body{
     padding: 20px 0;
     margin-left: 70px;
     text-align: justify;
+    transition: transform 0.5s ease-in-out
 }
+
+.custom-text:hover{
+    transform: scale(1.05);
+}
+
 
 .custom-content-section.custom-reverse .custom-text {
     margin-left: 0; 
@@ -299,3 +319,15 @@ body{
 .custom-content-section.last{
     margin-bottom: 0;
 }
+
+.photo-credit {
+    font-size: 0.8em;
+    color: #ccc;
+    text-align: center;
+    margin-top: 5px;
+    font-style: italic;
+    
+}
+
+
+

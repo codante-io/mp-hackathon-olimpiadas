@@ -62,6 +62,3 @@ def get_agenda(actual, day, sport=None):
         else:
             url = None
             show_more = False
-
-    print(agenda)
-get_agenda('1', '2024-08-05', 'Triathlon')
