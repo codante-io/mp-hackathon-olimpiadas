@@ -16,7 +16,8 @@ def home():
         data = response.json()
 
         for item in data['data']:        
-            countries.append({'rank': item['rank'], 'nome': item['name'], 'gold': item['gold_medals'], 'silver': item['silver_medals'], 'bronze': item['bronze_medals'],'medalha': item['total_medals']})
+            countries.append({'rank': item['rank'], 'nome': item['name'], 'gold': item['gold_medals'], 
+                              'silver': item['silver_medals'], 'bronze': item['bronze_medals'],'medalha': item['total_medals']})
 
             countries_sort = sorted(countries, key=lambda x: x['gold'], reverse=True)  
         
@@ -33,11 +34,14 @@ def calendário():
 
     agenda, final_url, show_more = get_agenda(actual, day)
     
+    
+    
     if show_more:
         actual = casting_actual(final_url, day)
     agenda = time_to_saopaulo(agenda)
 
     show_next, show_previous, day_plus_one, day_minus_one = check_if_days_are_valid(day)
+
 
     context = {"agenda": agenda, "day_plus_one": day_plus_one, "day_minus_one": day_minus_one,
                 "show_previous": show_previous, "show_next": show_next, "disciplines": disciplines, "actual": actual, "day":day,
