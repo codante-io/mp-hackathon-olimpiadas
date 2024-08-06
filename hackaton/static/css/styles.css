@@ -162,28 +162,62 @@ body{
 .schedule-container{
     width: 100%;
     background-color: #012a4a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .filter{
-    width: 88%;
+    text-decoration: none;
+    background-color: #ED7632;
+    width: 40%;
     display: flex;
-    gap: 15%;
-    margin: 1% auto 0.5% auto;
-    justify-content: right;
+    justify-content: center;
+    align-items: center; 
+    gap: 1rem; 
+    margin: 1% auto 0.5% 55%;
+    border-radius: 1.25rem;
 }
-.filter-text{
-    font-family: "Zain", sans-serif;
-    font-size: 120%;
-    font-weight: 600;
-    width: auto;
-    color: #F7F6F4;
+.filter form {
+    display: flex;
+    align-items: center;
+    gap: 1rem; 
+}
 
+.filter .filter-image {
+    width: 2rem; 
+    height: auto;
 }
+
+.filter select {
+    background-color: #ED7632;
+    padding: 0.5rem;
+    font-size: 100%;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+}
+
+.filter button {
+    font-size: 100%;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #ED7632; 
+    color: #F7F6F4; 
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Efeito de transição para hover */
+}
+
+.filter button:hover {
+    background-color: #D65A1E; 
+}
+
 .schedule {  
-
+    margin: 0; 
     height: 100%;
-    width: 100%;
-    padding-left: 1%;
-    margin: 0% 0 0 0;
+    width: 90%;
     border-spacing: 0.6rem;
     border-radius: 1.25rem;
     overflow-y: auto;
@@ -200,8 +234,8 @@ body{
     text-align: center;
     
 }
-
 .schedule th, .schedule td {
+    width: 19rem;
     padding: 1% 1%;
     border-collapse: separate;
     border-radius: 1vh;
@@ -212,6 +246,8 @@ body{
     font-size: 120%;
     color: #1E212B ;
     background-color: #f4f1de;
+    text-align: center;
+    vertical-align: middle; 
 
 }
 .schedule tbody tr td{
@@ -219,6 +255,21 @@ body{
     vertical-align: middle;
     
 }
+.schedule tr td:nth-child(1) {
+    width: 20%;
+}
+
+.schedule tr td:nth-child(2) {
+    width: 30%; 
+}
+
+.schedule tr td:nth-child(3) {
+    width: 35%;
+}
+
+.schedule tr td:nth-child(4) {
+    width: 15%;
+} 
 .schedule::-webkit-scrollbar {
     width: 1rem;
     height: 1rem;
