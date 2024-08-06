@@ -62,7 +62,7 @@ def calendario_filtrado():
     show_next, show_previous, day_plus_one, day_minus_one = check_if_days_are_valid(day)
 
     actual = request.args.get('actual', 1)
-    print(sport)
+    
     agenda, final_url, show_more = get_agenda(actual, day, sport)
     
     if show_more:
@@ -142,7 +142,7 @@ def historia():
             if item['id'] == 'BRA':
                 br_medals = item['total_medals']
                 br_gold_medals = item['gold_medals']
-                print(br_gold_medals)
+                
                 break
     
     context = {"usa_medals": usa_medals, "usa_gold_medals": usa_gold_medals, "br_medals": br_medals, "br_gold_medals": br_gold_medals}
