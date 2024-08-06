@@ -152,4 +152,11 @@ def historia():
 
 @app.route('/sedes')
 def sedes():
-    return render_template('pages/sedes.html')
+    response = requests.get('https://apis.codante.io/olympic-games/venues')
+    if response.status_code == 200:
+        data = response.json()
+        venues = []
+        for item in data['data']:
+            if item['id'] not in venues:
+                venues.append({"id":item['id'], "name":item['name'], "url": item['url']})
+    return render_template('pages/sedes.html', venues = venues)

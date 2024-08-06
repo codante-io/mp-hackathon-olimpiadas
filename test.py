@@ -19,9 +19,16 @@ response = requests.get(url)
 # else:
 #     print(f"Erro ao acessar a API: {response.status_code}")
 
+# if response.status_code == 200:
+#     data = response.json()
+
+#     for item in data['data']:
+#         if item['id'] == 'BRA':
+#             print(item)
+
+
+
+response = requests.get('https://apis.codante.io/olympic-games/events')
 if response.status_code == 200:
     data = response.json()
-
-    for item in data['data']:
-        if item['id'] == 'BRA':
-            print(item)
+    print(data)

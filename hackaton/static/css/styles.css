@@ -22,6 +22,11 @@ body{
     justify-content: space-evenly;
     align-items: center;
 }
+.image{
+    padding-left: 12.5%;
+    height: 12%;
+    width: 25%;
+}
 .btn-header{
     text-decoration: none;
     font-family: "Zain", sans-serif;
@@ -32,11 +37,7 @@ body{
 .btn-header:hover{
     color: #ED7632;
 }
-.image{
-    padding-left: 10%;
-    height: 12%;
-    width: 24%;
-}
+
 .container{
     border-collapse: collapse;
     width: 100%;
@@ -343,7 +344,6 @@ body{
     font-size: 1.3em;
     margin: 0;
 }
-
 .hide-sidebar::-webkit-scrollbar {
     display: none;
 }
@@ -364,7 +364,7 @@ body{
 }
 
 .custom-content-section.last{
-    margin-bottom: 0;
+    margin-bottom: 40px;
 }
 
 .photo-credit {
@@ -418,7 +418,7 @@ figure{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 0;
+    padding-left: 5%;
     list-style-type: none;
 }
 .place-item{
@@ -430,7 +430,8 @@ figure{
     flex-direction: column;
     align-items: center;
 }
-.place-title{ 
+.place-title{
+    padding-right: 20%; 
     text-decoration: none;
     font-size: 150%;
     text-align: center; 
@@ -449,6 +450,15 @@ figure{
     transform: scale(1.08);
     box-shadow: 0 0 63px  rgba(6,75,127, 1); /* Sombra igual em todos os lados */
     border-radius: 15px; /* Ajuste o valor conforme o nível de arredondamento desejado */
+}
+
+.divider {
+    justify-content: center;
+    width: 80%;
+    border: 0;
+    height: 0.2rem;
+    background-image: url('/static/images/header-image.png');
+    margin:  2% 0 0 6%;
 }
 
 /*RESPONSIVE*/

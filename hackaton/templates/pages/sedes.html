@@ -16,7 +16,7 @@
                     norte de Paris, em Saint-Denis. A vila olímpica foi projetada para ser sustentável e acessível e será transformada em um bairro residencial
                     após os jogos, deixando um legado olímpico na região.   
                 </p>
-                <h3 class="title">Números sobre a Vila</h3>
+                <h3 class="title">Informações sobre a Vila</h3>
                 <ul>
                     <li class="text">300.00 m² de área</li>
                     <li class="text">22.250 atletas Olímpicos e Paralímpicos acomodados</li>
@@ -29,50 +29,19 @@
         <div class="places">
             <h1 class="list-title">Locais de Jogos</h1>
             <ul class="places-list"> 
+                {%for venue in venues%}
+                {% if loop.index0 % 3 == 0 and not loop.first %}
+                    <hr class="divider">
+                {% endif %}
                 <li class="place-item">
                     <div class="place-div">
-                        <h2 class="place-title">Arena Bercy</h2>
-                        <img class="hq-places-image" src="{{url_for('static', filename='images/locais/bercy.avif')}}" alt="">
-                        <p class="text">Esportes: Basquete, Ginástica Artistica, Ginástica de Trampolim</p>
+                        <h2 class="place-title">{{venue['name']}}</h2>
+                        <a href="{{venue['url']}}">
+                            <img class="hq-places-image" src="{{url_for('static', filename='images/locais/'~venue['id']~'.avif')}}" alt="">
+                        </a>  
                     </div>
                 </li>
-                <li class="place-item">
-                    <div class="place-div">
-                        <h2 class="place-title">Arena do Campo de Marte</h2>
-                        <img class="hq-places-image" src="{{url_for('static', filename='images/locais/campo-de-marte.avif')}}" alt="">
-                        <p class="text">Esportes: Judô, Luta</p>
-                    </div>
-                </li>
-                <li class="place-item">
-                    <div class="place-div">
-                        <h2 class="place-title">Estádio Allianz Riviera</h2>
-                        <img class="hq-places-image" src="{{url_for('static', filename='images/locais/Allianz-Riviera-Nice.avif')}}" alt="">
-                        <p class="text">Esportes: Futebol</p>
-                    </div>
-                </li>
-                <li class="place-item">
-                    <div class="place-div">
-                        <h2 class="place-title">Arena Paris Norte</h2>
-                        <img class="hq-places-image" src="{{url_for('static', filename='images/locais/paris-norte.avif')}}" alt="">
-                        <p class="text">Esportes: Boxe, Pentlato Moderno</p>
-                    </div>
-                </li>
-                <li class="place-item">
-                    <div class="place-div">
-                        <h2 class="place-title">Arena Paris la Défense</h2>
-                        <img class="hq-places-image" src="{{url_for('static', filename='images/locais/paris-la-defense.avif')}}" alt="">
-                        <p class="text">Esportes: Natação, Polo Aquático</p>
-                    </div>
-                </li>
-                <li class="place-item">
-                    <div class="place-div">
-                        <h2 class="place-title">Arena Paris Sul</h2>
-                        <img class="hq-places-image" src="{{url_for('static', filename='images/locais/paris-sul.avif')}}" alt="">
-                        <p class="text">Esportes: Handebol, Levantamento de Peso,
-                            Tênis de Mesa, Vôlei
-                        </p>
-                    </div>
-                </li>
+                {%endfor%}
             </ul>
         </div>
     </section>
