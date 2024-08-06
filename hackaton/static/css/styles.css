@@ -9,8 +9,8 @@ body{
 
 .header{
     background-image: url('/static/images/header-image.png');
-    background-size: cover; /* Ajusta a imagem para cobrir todo o header */
-    background-position: center; /* Centraliza a imagem */
+    background-size: cover; 
+    background-position: center; 
     background-repeat: no-repeat; 
     width: auto;
     padding: 0.6% 0% 0.6% 0;
@@ -201,7 +201,7 @@ body{
     border: none;
     border-radius: 0.25rem;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Efeito de transição para hover */
+    transition: background-color 0.3s ease; 
 }
 
 .filter button:hover {
@@ -280,7 +280,7 @@ body{
 .schedule::-webkit-scrollbar-thumb {
     background-color: #ED7632; /* Cor da "thumb" da barra de rolagem */
     border-radius: 1rem;
-    border: 3px solid #012a4a; /* Adiciona um espaço entre a "thumb" e a barra */
+    border: 3px solid #012a4a; 
 }
 
 
@@ -291,7 +291,7 @@ body{
     max-width: 2150px;
     margin: 80px 80px 0px 80px;
     overflow: auto;
-    overflow: visible; /* Permite que a imagem "saia" do contêiner sem ser cortada */
+    overflow: visible; 
     display: inline-block;
 }
 
@@ -304,15 +304,15 @@ body{
 .custom-content-section img.custom-image {
     max-width: 49%;
     border-radius: 10px;
-    box-shadow: 0 0 40px rgba(6,75,127, 0.9); /* Sombra igual em todos os lados */
+    box-shadow: 0 0 40px rgba(6,75,127, 0.9); 
     transition: transform 0.5s ease, box-shadow 0.5s ease, border-radius 0.5s ease;
     
 }
 
 .custom-image:hover {
     transform: scale(1.08);
-    box-shadow: 0 0 63px  rgba(6,75,127, 1); /* Sombra igual em todos os lados */
-    border-radius: 15px; /* Ajuste o valor conforme o nível de arredondamento desejado */
+    box-shadow: 0 0 63px  rgba(6,75,127, 1); 
+    border-radius: 15px; 
 }
 
 .custom-content-section .custom-text {
@@ -351,7 +351,7 @@ body{
 
 .shadow-container {
     position: relative;
-    padding-bottom: 170px; /* Ajuste conforme necessário */
+    padding-bottom: 170px;
 }
 
 .shadow {
@@ -359,9 +359,9 @@ body{
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 100px; /* Ajuste a altura da sombra conforme necessário */
+    height: 100px; 
     background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
-    pointer-events: none; /* Para que a sombra não interfira com o scroll */
+    pointer-events: none; 
 }
 
 .custom-content-section.last{
@@ -398,15 +398,15 @@ figure{
 .hq-custom-image {
     max-width: 100%;
     border-radius: 10px;
-    box-shadow: 0 0 40px rgba(6,75,127, 0.9); /* Sombra igual em todos os lados */
+    box-shadow: 0 0 40px rgba(6,75,127, 0.9); 
     transition: transform 0.5s ease, box-shadow 0.5s ease, border-radius 0.5s ease;
     
 }
 
 .hq-custom-image:hover {
     transform: scale(1.08);
-    box-shadow: 0 0 63px  rgba(6,75,127, 1); /* Sombra igual em todos os lados */
-    border-radius: 15px; /* Ajuste o valor conforme o nível de arredondamento desejado */
+    box-shadow: 0 0 63px  rgba(6,75,127, 1); 
+    border-radius: 15px; 
 }
 .list-title{
     margin: 0;
@@ -441,15 +441,15 @@ figure{
 .hq-places-image {
     max-width: 80%;
     border-radius: 10px;
-    box-shadow: 0 0 40px rgba(6,75,127, 0.9); /* Sombra igual em todos os lados */
+    box-shadow: 0 0 40px rgba(6,75,127, 0.9); 
     transition: transform 0.5s ease, box-shadow 0.5s ease, border-radius 0.5s ease;
     
 }
 
 .hq-places-image:hover {
     transform: scale(1.08);
-    box-shadow: 0 0 63px  rgba(6,75,127, 1); /* Sombra igual em todos os lados */
-    border-radius: 15px; /* Ajuste o valor conforme o nível de arredondamento desejado */
+    box-shadow: 0 0 63px  rgba(6,75,127, 1); 
+    border-radius: 15px; 
 }
 
 /*RESPONSIVE*/

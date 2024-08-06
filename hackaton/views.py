@@ -31,8 +31,6 @@ def calendário():
 
     agenda, final_url, show_more = get_agenda(actual, day)
     
-    
-    
     if show_more:
         actual = casting_actual(final_url, day)
     agenda = time_to_saopaulo(agenda)
@@ -73,7 +71,8 @@ def calendario_filtrado():
     context = {"agenda": agenda, "day_plus_one": day_plus_one, "day_minus_one": day_minus_one,
             "show_previous": show_previous, "show_next": show_next, "sport": sport, "actual": actual, 
             "translations": TRANSLATIONS, "disciplines": disciplines, "day": day}
-    if not agenda:
+    
+    if not agenda: #Erro caso não possuam jogos para aquela data
         return render_template('pages/erro.html', **context)
     
     return render_template('pages/calendario_filtrado.html', **context, len=len)
@@ -126,6 +125,9 @@ def resultados_filtrados():
             "show_previous": show_previous, "show_next": show_next, "sport": sport, "actual": actual, 
             "translations": TRANSLATIONS, "disciplines": disciplines}
     
+    if not agenda: #Erro caso não possuam jogos para aquela data
+        return render_template('pages/erro.html', **context)
+    
     return render_template('pages/resultados_filtrados.html', **context, len=len)
 
 @app.route('/historia')
@@ -133,6 +135,7 @@ def historia():
     response = requests.get(URL)
     if response.status_code == 200:
         data = response.json()
+        #Contagem de medalhas USA e Brasil
         for item in data['data']:
             if item['id'] == 'USA':
                 usa_medals = item['total_medals']
@@ -142,7 +145,6 @@ def historia():
             if item['id'] == 'BRA':
                 br_medals = item['total_medals']
                 br_gold_medals = item['gold_medals']
-                
                 break
     
     context = {"usa_medals": usa_medals, "usa_gold_medals": usa_gold_medals, "br_medals": br_medals, "br_gold_medals": br_gold_medals}
