@@ -1,0 +1,45 @@
+{%extends "partials/template.html"%}
+{% block background_image %}
+    <!-- Nenhuma imagem de fundo aqui -->
+{% endblock %}
+
+{% block title %}OlympApp {% endblock title %}
+
+{%block content%}
+    <h1 class="date">{{day}}</h1>
+    <div class="filter">
+        <form action="{{ url_for('calendario_filtrado') }}" method="post">
+            <img class="filter-image" src="{{url_for('static', filename='images/filtro.png')}}" alt="">
+            <select class="" name="selecao_esporte" id="options">
+                <option value="" disabled selected>Selecione um esporte</option>
+                {% for sport in disciplines %}
+                    <option value="{{ sport['id'] }}">{{ translations.get(sport['name']) }}</option>  
+                {% endfor %}
+            </select>
+            <button type="submit">Filtrar</button>
+        </form> 
+
+        {% if show_previous %}
+        <a href="{{ url_for('calendario_filtrado', day=day_minus_one, sport=sport) }}">
+            <button>Dia Anterior</button>
+        </a>
+        {% endif %}
+        {% if show_next %}
+        <a href="{{ url_for('calendario_filtrado', day=day_plus_one, sport=sport) }}">
+            <button>Próximo Dia</button>
+        </a>
+        {% endif %}
+    </div>
+       <h2 class="footer-text">Não existe programação para esse dia</h2>
+
+    {% if show_more %}
+        <a href="{{ url_for('calendário', day=day, actual=actual) }}">
+            <button>Mostrar mais</button>
+        </a>
+    {% endif %}
+    {% if (actual - 10) > 0 %}
+        <a href="{{ url_for('calendário', day=day, actual=(actual-10)) }}">
+            <button>Mostrar menos</button>
+        </a>
+    {% endif %}
+{%endblock%}

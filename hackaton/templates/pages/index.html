@@ -1,0 +1,46 @@
+{% extends "partials/template.html" %}
+{% block title %} OlympApp - Quadro de Medalhas{% endblock title %}
+{% block content %}
+    <section class="container">
+        <table class="container-tbl">
+            <thead>
+                <tr >
+                    <th>#</th>
+                    <th>País</th>
+                    <th class="container-tbl-medals">
+                        <img class="medals" src="{{url_for('static', filename='images/medalha-de-ouro.png')}}" alt="">
+                    </th>
+                    <th class="container-tbl-medals">
+                        <img class="medals" src="{{url_for('static', filename='images/medalha-de-prata.png')}}" alt="">
+                    </th>
+                    <th class="container-tbl-medals">
+                        <img class="medals" src="{{url_for('static', filename='images/medalha-de-bronze.png')}}" alt="">
+                    </th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody >
+                {%for item in countries%}
+                <tr>
+                    <td>{{item['rank']}}</td>
+                    <td>{{item['nome']}}</td>
+                    <td>
+                        {{item['gold']}}
+                    </td>
+                    <td>
+                        {{item['silver']}} 
+                    </td>
+                    <td>
+                        {{item['bronze']}}
+                    </td>
+                    
+                    <td>{{item['medalha']}}</td>
+                </tr>
+                    
+                {%endfor%}
+            </tbody>
+            
+        </table>
+    </section>
+    <div class="shadow"></div>
+{% endblock %}

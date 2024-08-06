@@ -1,0 +1,85 @@
+{%extends "partials/template.html"%}
+{% block background_image %}
+    <!-- Nenhuma imagem de fundo aqui -->
+{% endblock %}
+
+{% block title %}OlympApp - Agenda {% endblock %}
+
+{%block content%}
+    
+    <h1 class="date">{{agenda[0]['day']}}</h1>
+    <div class="filter">
+        <form action="{{ url_for('calendario_filtrado') }}" method="post">
+            <img class="filter-image" src="{{url_for('static', filename='images/filtro.png')}}" alt="">
+            <select class="" name="selecao_esporte" id="options">
+                <option value="" disabled selected>Selecione um esporte</option>
+                {% for sport in disciplines %}
+                    <option value="{{ sport['id'] }}">{{ translations.get(sport['name']) }}</option>  
+                {% endfor %}
+            </select>
+            <button type="submit">Filtrar</button>
+        </form> 
+
+        {% if show_previous %}
+        <a href="{{ url_for('calendario_filtrado', day=day_minus_one, sport=sport) }}">
+            <button>Dia Anterior</button>
+        </a>
+        {% endif %}
+        {% if show_next %}
+        <a href="{{ url_for('calendario_filtrado', day=day_plus_one, sport=sport) }}">
+            <button>Próximo Dia</button>
+        </a>
+        {% endif %}
+    </div>
+       
+    <section class="schedule-container">
+        <table class="schedule">
+            <thead  >
+                <tr >
+                    <th>Esporte</th>
+                    <th>Evento</th>
+                    <th>Competidores</th>
+                    <th>Hora</th>   
+                </tr>
+            </thead>
+            <tbody >
+                {%for item in agenda%}
+                <tr>
+                    <td>{{ translations.get(item['discipline_name']) }}</td>
+                    <td>{{item['detailed_event_name']}}</td>    
+                    <td>
+                    {% if item['competitors']|length > 2%}
+                        Qualificator
+                    {%elif item['competitors']|length == 0%}
+                        TBD
+                    {% else %}
+                        {%set competitors_list = []%}
+                        {% for competitor in item['competitors'] %}
+                            {%if loop.index == 1%}
+                                {%set competitors_list = competitors_list.append(competitor['competitor_name'] + ' X ')%}
+                            {% else %}
+                                {%set competitors_list = competitors_list.append(competitor['competitor_name'])%}
+                            {%endif%}
+                        {% endfor %}
+                        {{ competitors_list | join(' ') }}
+                    {% endif %}
+                    </td> 
+                    <td>{{ item['start_date'][-8:] }}</td>
+                </tr>
+                    
+                {%endfor%}
+            </tbody>
+            
+        </table>
+    </section>
+    {% if show_more %}
+        <a href="{{ url_for('calendário', day=day, actual=actual) }}">
+            <button>Mostrar mais</button>
+        </a>
+    {% endif %}
+    {% if (actual - 10) > 0 %}
+        <a href="{{ url_for('calendário', day=day, actual=(actual-10)) }}">
+            <button>Mostrar menos</button>
+        </a>
+    {% endif %}
+{%endblock%}

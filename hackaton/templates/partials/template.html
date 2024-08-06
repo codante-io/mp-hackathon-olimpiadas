@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+{% include  "partials/head.html" %}
+<title>{% block title %}Olympapp{% endblock %}</title>
+
+<body> 
+    {% include "partials/header.html" %}
+    {% block background_image %}
+    <img class="background-image" src="{{url_for('static', filename='images/paris-2024.avif')}}" alt="">
+    {%endblock%}
+    
+    {%block content%}
+    {%endblock%}
+
+    <footer class="footer-text">
+
+    </footer>
+</body>
+</html>
