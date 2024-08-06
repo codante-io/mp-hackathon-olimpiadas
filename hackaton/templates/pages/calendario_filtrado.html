@@ -18,13 +18,13 @@
         </form> 
 
         {% if show_previous %}
-        <a href="{{ url_for('calendário', day=day_minus_one) }}">
-            <button>Anterior</button>
+        <a href="{{ url_for('calendario_filtrado', day=day_minus_one, sport=sport) }}">
+            <button>Dia Anterior</button>
         </a>
         {% endif %}
         {% if show_next %}
-        <a href="{{ url_for('calendário', day=day_plus_one) }}">
-            <button>Próximo</button>
+        <a href="{{ url_for('calendario_filtrado', day=day_plus_one, sport=sport) }}">
+            <button>Próximo Dia</button>
         </a>
         {% endif %}
     </div>
