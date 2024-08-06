@@ -1,0 +1,85 @@
+{%extends "partials/template.html"%}
+{% block background_image %}
+    <!-- Nenhuma imagem de fundo aqui -->
+{% endblock %}
+{%block content%}
+    <section class="hide-sidebar">
+        <div class="custom-container custom-content-section">
+            <figure class="">
+                <img class="hq-custom-image" src="{{url_for('static', filename='images/vila-olimpica.avif')}}" alt="Vila Olímpica">
+                <figcaption class="subtitle">Foto de Sector E_Nexity SA-EiffageImmobilier IDF consortium</figcaption>
+            </figure>
+            
+            <div class="custom-text">
+                <h2 class="title">A VILA OLÍMPICA</h2>
+                <p class="text">O centro de acolhimento para atletas e equipes durante os Jogos Olímpicos e Paralímpicos de 2024 está localizado ao
+                    norte de Paris, em Saint-Denis. A vila olímpica foi projetada para ser sustentável e acessível e será transformada em um bairro residencial
+                    após os jogos, deixando um legado olímpico na região.   
+                </p>
+                <h3 class="title">Números sobre a Vila</h3>
+                <ul>
+                    <li class="text">300.00 m² de área</li>
+                    <li class="text">22.250 atletas Olímpicos e Paralímpicos acomodados</li>
+                    <li class="text">2.500 novas casas</li>
+                    <li class="text">120.000 m²  de escritórios</li>
+                    <li class="text">3.200 m² de lojas de bairro</li>
+                </ul>
+            </div>
+        </div>
+        <div class="places">
+            <h1 class="list-title">Locais de Jogos</h1>
+            <ul class="places-list"> 
+                <li class="place-item">
+                    <div class="place-div">
+                        <h2 class="place-title">Arena Bercy</h2>
+                        <img class="hq-places-image" src="{{url_for('static', filename='images/locais/bercy.avif')}}" alt="">
+                        <p class="text">Esportes: Basquete, Ginástica Artistica, Ginástica de Trampolim</p>
+                    </div>
+                </li>
+                <li class="place-item">
+                    <div class="place-div">
+                        <h2 class="place-title">Arena do Campo de Marte</h2>
+                        <img class="hq-places-image" src="{{url_for('static', filename='images/locais/campo-de-marte.avif')}}" alt="">
+                        <p class="text">Esportes: Judô, Luta</p>
+                    </div>
+                </li>
+                <li class="place-item">
+                    <div class="place-div">
+                        <h2 class="place-title">Estádio Allianz Riviera</h2>
+                        <img class="hq-places-image" src="{{url_for('static', filename='images/locais/Allianz-Riviera-Nice.avif')}}" alt="">
+                        <p class="text">Esportes: Futebol</p>
+                    </div>
+                </li>
+                <li class="place-item">
+                    <div class="place-div">
+                        <h2 class="place-title">Arena Paris Norte</h2>
+                        <img class="hq-places-image" src="{{url_for('static', filename='images/locais/paris-norte.avif')}}" alt="">
+                        <p class="text">Esportes: Boxe, Pentlato Moderno</p>
+                    </div>
+                </li>
+                <li class="place-item">
+                    <div class="place-div">
+                        <h2 class="place-title">Arena Paris la Défense</h2>
+                        <img class="hq-places-image" src="{{url_for('static', filename='images/locais/paris-la-defense.avif')}}" alt="">
+                        <p class="text">Esportes: Natação, Polo Aquático</p>
+                    </div>
+                </li>
+                <li class="place-item">
+                    <div class="place-div">
+                        <h2 class="place-title">Arena Paris Sul</h2>
+                        <img class="hq-places-image" src="{{url_for('static', filename='images/locais/paris-sul.avif')}}" alt="">
+                        <p class="text">Esportes: Handebol, Levantamento de Peso,
+                            Tênis de Mesa, Vôlei
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <div class="shadow"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+{%endblock%}

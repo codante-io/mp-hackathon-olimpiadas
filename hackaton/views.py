@@ -7,9 +7,6 @@ from utils import *
 
 @app.route('/')
 def home(): 
-    # page = int(request.args.get('page', 1))
-    # start = (page-1) * TOTAL_RESULTS
-    # end = start + TOTAL_RESULTS 
     response = requests.get(URL)
     countries = []
     if response.status_code == 200:
@@ -152,3 +149,7 @@ def historia():
     context = {"usa_medals": usa_medals, "usa_gold_medals": usa_gold_medals, "br_medals": br_medals, "br_gold_medals": br_gold_medals}
 
     return render_template('pages/historia.html',**context)
+
+@app.route('/sedes')
+def sedes():
+    return render_template('pages/sedes.html')
