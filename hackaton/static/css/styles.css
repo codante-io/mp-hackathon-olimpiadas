@@ -176,6 +176,7 @@ body{
     gap: 1rem; 
     margin: 1% auto 0.5% 55%;
     border-radius: 1.25rem;
+    padding-left: 10px;
 }
 .filter form {
     display: flex;

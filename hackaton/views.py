@@ -72,9 +72,12 @@ def calendario_filtrado():
         actual = casting_actual(final_url, day)
     agenda = time_to_saopaulo(agenda)
 
+    
     context = {"agenda": agenda, "day_plus_one": day_plus_one, "day_minus_one": day_minus_one,
             "show_previous": show_previous, "show_next": show_next, "sport": sport, "actual": actual, 
-            "translations": TRANSLATIONS, "disciplines": disciplines}
+            "translations": TRANSLATIONS, "disciplines": disciplines, "day": day}
+    if not agenda:
+        return render_template('pages/erro.html', **context)
     
     return render_template('pages/calendario_filtrado.html', **context, len=len)
 
