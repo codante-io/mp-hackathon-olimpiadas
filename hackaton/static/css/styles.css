@@ -1,0 +1,471 @@
+
+body{
+    background-color: #012a4a;
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.header{
+    background-image: url('/static/images/header-image.png');
+    background-size: cover; /* Ajusta a imagem para cobrir todo o header */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; 
+    width: auto;
+    padding: 0.6% 0% 0.6% 0;
+    box-shadow: 0 0 40px  rgba(6,75,127, 0.8);
+    
+}
+.header-nav{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.image{
+    padding-left: 12.5%;
+    height: 12%;
+    width: 25%;
+}
+.btn-header{
+    text-decoration: none;
+    font-family: "Zain", sans-serif;
+    font-size: 210%;
+    font-weight: 800;
+    color: #000000;
+}
+.btn-header:hover{
+    color: #ED7632;
+}
+
+.container{
+    border-collapse: collapse;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}   
+
+.container-tbl {  
+    background-color: #012a4a;  
+    width: 55%;
+    margin: 7% 0 0 0;
+    border-spacing: 0.6rem;
+    border-radius: 1.25rem;
+    overflow-y: auto;
+    max-height: 38rem;
+    display: block;
+}
+
+.container-tbl-medals{
+    width: 10%;
+}
+.medals{
+    padding-left: 20%;
+    display: block;
+    height: auto;
+    width: 50%;
+}
+
+.container-tbl thead tr {   
+    font-size: 120%;
+    font-family: "Roboto Mono", monospace;
+    font-weight: 600;
+    background-color: #ED7632;
+    color: #ffffff;
+    text-align: center;
+    
+}
+
+.container-tbl th, .container-tbl td {
+    padding: 1% 1%;
+    border-collapse: separate;
+    border-radius: 1vh;
+}
+
+.container-tbl tbody tr {
+    font-family: "Montserrat", sans-serif;
+    font-size: 120%;
+    color: #1E212B ;
+    background-color: #f4f1de;
+
+}
+.container-tbl tbody tr td{
+    text-align: center;
+    vertical-align: middle;
+    
+}
+.container-tbl tbody tr td:nth-child(2){
+    text-align: left;
+    vertical-align: middle;
+    
+}   
+.container-tbl::-webkit-scrollbar {
+    width: 1rem;
+    height: 1rem;
+}
+
+.container-tbl::-webkit-scrollbar-track {
+    background: #012a4a; /* Cor do fundo da barra de rolagem */
+    border-radius: 0.2rem;
+}
+
+.container-tbl::-webkit-scrollbar-thumb {
+    background-color: #ED7632; /* Cor da "thumb" da barra de rolagem */
+    border-radius: 1rem;
+    border: 3px solid #012a4a; /* Adiciona um espaço entre a "thumb" e a barra */
+}
+
+.background-image{
+    display: flex;
+    justify-content: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Mantém a imagem atrás do conteúdo */
+    overflow: hidden;
+    opacity: 60%;
+}
+.footer-text{
+    background-color: #012a4a;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: #F7F6F4;
+    font-family: "Zain", sans-serif;
+    font-size: 200%;
+    font-weight: 600;
+
+}
+
+/*AGENDA*/
+.date{
+    border-radius: 1.25rem;
+    margin-left: 39%;
+    width: 20%;
+    font-family: "Zain", sans-serif;
+    font-size: 200%;
+    font-weight: 600;
+    color: #F7F6F4;
+    background-color: #ED7632;
+    text-align: center;
+}
+.schedule-container{
+    width: 100%;
+    background-color: #012a4a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.filter{
+    text-decoration: none;
+    background-color: #ED7632;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    gap: 1rem; 
+    margin: 1% auto 0.5% 55%;
+    border-radius: 1.25rem;
+}
+.filter form {
+    display: flex;
+    align-items: center;
+    gap: 1rem; 
+}
+
+.filter .filter-image {
+    width: 2rem; 
+    height: auto;
+}
+
+.filter select {
+    background-color: #ED7632;
+    padding: 0.5rem;
+    font-size: 100%;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+}
+
+.filter button {
+    font-size: 100%;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #ED7632; 
+    color: #F7F6F4; 
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Efeito de transição para hover */
+}
+
+.filter button:hover {
+    background-color: #D65A1E; 
+}
+
+.schedule {  
+    margin: 0; 
+    max-height: 60%;
+    width: 90%;
+    border-spacing: 0.6rem;
+    border-radius: 1.25rem;
+    overflow-y: auto;
+    max-height: 40rem;
+    display: block;
+}
+
+.schedule thead tr {   
+    font-size: 120%;
+    font-family: "Roboto Mono", monospace;
+    font-weight: 600;
+    background-color: #ED7632;
+    color: #ffffff;
+    text-align: center;
+    
+}
+.schedule th, .schedule td {
+    width: 19rem;
+    padding: 1% 1%;
+    border-collapse: separate;
+    border-radius: 1vh;
+}
+.schedule tbody{
+    max-height: 30rem;
+}
+
+.schedule tbody tr {
+    font-family: "Montserrat", sans-serif;
+    font-size: 120%;
+    color: #1E212B ;
+    background-color: #f4f1de;
+    text-align: center;
+    vertical-align: middle; 
+    
+}
+.schedule tbody tr td{
+    text-align: center;
+    vertical-align: middle;
+    
+}
+.schedule tr td:nth-child(1) {
+    width: 20%;
+}
+
+.schedule tr td:nth-child(2) {
+    width: 30%; 
+}
+
+.schedule tr td:nth-child(3) {
+    width: 35%;
+}
+
+.schedule tr td:nth-child(4) {
+    width: 15%;
+} 
+.schedule::-webkit-scrollbar {
+    width: 1rem;
+    height: 1rem;
+}
+
+.schedule::-webkit-scrollbar-track {
+    background: #012a4a; /* Cor do fundo da barra de rolagem */
+    border-radius: 0.2rem;
+}
+
+.schedule::-webkit-scrollbar-thumb {
+    background-color: #ED7632; /* Cor da "thumb" da barra de rolagem */
+    border-radius: 1rem;
+    border: 3px solid #012a4a; /* Adiciona um espaço entre a "thumb" e a barra */
+}
+
+
+
+
+.custom-container {
+    padding: 20px;
+    max-width: 2150px;
+    margin: 80px 80px 0px 80px;
+    overflow: auto;
+    overflow: visible; /* Permite que a imagem "saia" do contêiner sem ser cortada */
+    display: inline-block;
+}
+
+.custom-content-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.custom-content-section img.custom-image {
+    max-width: 49%;
+    border-radius: 10px;
+    box-shadow: 0 0 40px rgba(6,75,127, 0.9); /* Sombra igual em todos os lados */
+    transition: transform 0.5s ease, box-shadow 0.5s ease, border-radius 0.5s ease;
+    
+}
+
+.custom-image:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 63px  rgba(6,75,127, 1); /* Sombra igual em todos os lados */
+    border-radius: 15px; /* Ajuste o valor conforme o nível de arredondamento desejado */
+}
+
+.custom-content-section .custom-text {
+    max-width: 50%;
+    padding: 20px 0;
+    margin-left: 70px;
+    text-align: justify;
+    transition: transform 0.5s ease-in-out
+}
+
+.custom-text:hover{
+    transform: scale(1.05);
+}
+
+
+.custom-content-section.custom-reverse .custom-text {
+    margin-left: 0; 
+    margin-right: 70px; 
+    text-align: justify;
+}
+
+.custom-content-section h2 {
+    font-size: 2.9em;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.custom-content-section p {
+    font-size: 1.3em;
+    margin: 0;
+}
+.hide-sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+.shadow-container {
+    position: relative;
+    padding-bottom: 170px; /* Ajuste conforme necessário */
+}
+
+.shadow {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px; /* Ajuste a altura da sombra conforme necessário */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    pointer-events: none; /* Para que a sombra não interfira com o scroll */
+}
+
+.custom-content-section.last{
+    margin-bottom: 40px;
+}
+
+.photo-credit {
+    font-size: 0.8em;
+    color: #ccc;
+    text-align: center;
+    margin-top: 5px;
+    font-style: italic;
+    
+}
+/*TEXTOS */
+.subtitle{
+    text-align: left;
+    color: #e6dfdc;
+    font-size: 80%;
+}
+.title{
+    font-size: 150%;
+    text-align: center; 
+    color: #d16426; 
+    font-family: 'Oswald', sans-serif;
+}
+.text{
+    color: #e6dfdc;
+    font-size: 120%;
+}
+figure{
+    margin: 0;
+}
+.hq-custom-image {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 40px rgba(6,75,127, 0.9); /* Sombra igual em todos os lados */
+    transition: transform 0.5s ease, box-shadow 0.5s ease, border-radius 0.5s ease;
+    
+}
+
+.hq-custom-image:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 63px  rgba(6,75,127, 1); /* Sombra igual em todos os lados */
+    border-radius: 15px; /* Ajuste o valor conforme o nível de arredondamento desejado */
+}
+.list-title{
+    margin: 0;
+    font-size: 250%;
+    text-align: center; 
+    color: #d16426; 
+    font-family: 'Oswald', sans-serif;
+}
+.places-list{   
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-left: 5%;
+    list-style-type: none;
+}
+.place-item{
+    width: 30%;
+    list-style-type: none;
+}
+.place-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.place-title{
+    padding-right: 20%; 
+    text-decoration: none;
+    font-size: 150%;
+    text-align: center; 
+    color: #d16426; 
+    font-family: 'Oswald', sans-serif;
+}
+.hq-places-image {
+    max-width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 0 40px rgba(6,75,127, 0.9); /* Sombra igual em todos os lados */
+    transition: transform 0.5s ease, box-shadow 0.5s ease, border-radius 0.5s ease;
+    
+}
+
+.hq-places-image:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 63px  rgba(6,75,127, 1); /* Sombra igual em todos os lados */
+    border-radius: 15px; /* Ajuste o valor conforme o nível de arredondamento desejado */
+}
+
+.divider {
+    justify-content: center;
+    width: 80%;
+    border: 0;
+    height: 0.2rem;
+    background-image: url('/static/images/header-image.png');
+    margin:  2% 0 0 6%;
+}
+
+/*RESPONSIVE*/
+@media(max-width: 800px){
+    .header-nav{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
