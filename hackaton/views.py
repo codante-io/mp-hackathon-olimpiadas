@@ -61,14 +61,11 @@ def calendario_filtrado():
         form_data = request.form.to_dict()
         if form_data.get('selecao_esporte'):
             sport = form_data.get('selecao_esporte')
-            
-        else:
-            return redirect('calendario')
 
     show_next, show_previous, day_plus_one, day_minus_one = check_if_days_are_valid(day)
 
     actual = request.args.get('actual', 1)
-
+    print(sport)
     agenda, final_url, show_more = get_agenda(actual, day, sport)
     
     if show_more:
@@ -134,7 +131,6 @@ def resultados_filtrados():
 @app.route('/historia')
 def historia():
     response = requests.get(URL)
-    countries = []
     if response.status_code == 200:
         data = response.json()
         for item in data['data']:
