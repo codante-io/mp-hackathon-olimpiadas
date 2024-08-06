@@ -36,7 +36,3 @@ formatted_date = datetime.now().strftime('%Y-%m-%d')
 #for i in requisicao['data']:
 #    print(f"{i['rank']} - {i['name']} - Ouro: {i['gold_medals']} | Prata: {i['silver_medals']} | Bronze: {i['bronze_medals']}")
 
-url = f'https://apis.codante.io/olympic-games/events?page=1&date=2024-07-27'
-req = requests.get(url)
-req = req.json()
-print(req)
