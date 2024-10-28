@@ -25,7 +25,7 @@ Do dia **29/07/2024** ao dia **07/08/2024** qualquer pessoa poderá participar g
 5. Implementar a sua solução no seu fork do repositório oficial
 6. Fazer deploy e submeter o link da sua resolução no site do Codante
 
-> [!TIP]
+> [!TIP]  
 > 📺 Você pode ver um [tutorial em vídeo sobre esse passo-a-passo aqui](https://codante.io/workshops/resolucao-pagina-de-faq/participando-do-mini-projeto-no-codante).
 
 ### 🔨 Desenvolva seu projeto
@@ -63,7 +63,7 @@ Os vencedores serão escolhidos por uma banca interna do Codante que levará em 
 2. **Qualidade do sofware:** ausência de erros e boa performance.
 3. **UX e UI:** interface e experiência do usuário bonitas e bem feitas, responsividade, etc.
 
-> [!WARNING]
+> [!WARNING]  
 > Observe que alguns critérios são subjetivos. A banca se reserva ao direito de sua própria interpretação. Não há possibilidade de recurso.
 
 ## ❓ Perguntas frequentes
